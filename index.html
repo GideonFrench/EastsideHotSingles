@@ -4,317 +4,107 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Eastside Roomies</title>
 <style>
+  * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E") 16 16, auto; }
+
   body {
     background-color: #000080;
     color: #ffff00;
     font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0; overflow-x: hidden;
   }
 
-  .marquee-bar {
-    background: #ff00ff;
-    color: #ffff00;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 4px 0;
-    border-top: 3px solid #00ffff;
-    border-bottom: 3px solid #00ffff;
-  }
+  #starfield { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
+  .star { position:absolute; background:white; border-radius:50%; animation: twinkle linear infinite; }
+  @keyframes twinkle { 0%{opacity:0;transform:translateY(0)} 50%{opacity:1} 100%{opacity:0;transform:translateY(-20px)} }
 
-  .main-table {
-    width: 780px;
-    margin: 0 auto;
-    background-color: #000066;
-    border: 4px ridge #ff00ff;
-  }
+  .marquee-bar, .main-table, #sparkle-container { position:relative; z-index:1; }
 
-  .header-cell {
-    background: linear-gradient(180deg, #660066, #000099, #660066);
-    text-align: center;
-    padding: 16px 12px 8px;
-    border-bottom: 4px ridge #ff00ff;
-  }
+  #sparkle-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
+  .sparkle { position:fixed; pointer-events:none; font-size:16px; animation:sparkle-fade 0.8s ease-out forwards; user-select:none; }
+  @keyframes sparkle-fade { 0%{opacity:1;transform:translate(0,0) scale(1)} 100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0.2)} }
 
-  .site-title {
-    font-family: "Impact", "Arial Black", sans-serif;
-    font-size: 52px;
-    color: #ff00ff;
-    text-shadow: 3px 3px 0px #ffff00, 5px 5px 0px #ff0000;
-    letter-spacing: 3px;
-    display: block;
-    margin-bottom: 4px;
-  }
+  .marquee-bar { background:#ff00ff; color:#ffff00; font-weight:bold; font-size:14px; padding:4px 0; border-top:3px solid #00ffff; border-bottom:3px solid #00ffff; }
 
-  .subtitle {
-    color: #00ffff;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
+  .main-table { width:780px; margin:0 auto; background-color:#000066; border:4px ridge #ff00ff; }
 
-  .hearts-row {
-    color: #ff69b4;
-    font-size: 20px;
-    letter-spacing: 4px;
-    margin: 6px 0;
-  }
+  .header-cell { background:linear-gradient(180deg,#660066,#000099,#660066); text-align:center; padding:16px 12px 8px; border-bottom:4px ridge #ff00ff; }
 
-  .navbar {
-    background: #330033;
-    text-align: center;
-    padding: 8px;
-    border-bottom: 3px solid #ff00ff;
-  }
-  .navbar a {
-    color: #00ffff;
-    font-weight: bold;
-    font-size: 13px;
-    text-decoration: none;
-    margin: 0 12px;
-    padding: 2px 8px;
-    border: 2px outset #00ffff;
-    background: #000066;
-  }
-  .navbar a:hover {
-    background: #ff00ff;
-    color: #000000;
-  }
+  @keyframes rainbowCycle { 0%{color:#ff0000} 16%{color:#ff9900} 33%{color:#ffff00} 50%{color:#00ff00} 66%{color:#00ffff} 83%{color:#ff00ff} 100%{color:#ff0000} }
+  .site-title { font-family:"Impact","Arial Black",sans-serif; font-size:52px; text-shadow:3px 3px 0px #ffff00,5px 5px 0px #ff0000; letter-spacing:3px; display:block; margin-bottom:4px; animation:rainbowCycle 2s linear infinite; }
 
-  .counter-strip {
-    background: #000000;
-    text-align: center;
-    padding: 6px;
-    font-size: 11px;
-    color: #00ff00;
-    font-family: "Courier New", monospace;
-    border-bottom: 1px solid #333;
-  }
+  .subtitle { color:#00ffff; font-size:13px; font-weight:bold; letter-spacing:2px; }
+  .hearts-row { color:#ff69b4; font-size:20px; letter-spacing:4px; margin:6px 0; }
 
-  .divider-row td {
-    padding: 10px 20px;
-    text-align: center;
-  }
-  .divider-hearts {
-    color: #ff69b4;
-    font-size: 16px;
-    letter-spacing: 6px;
-  }
+  .navbar { background:#330033; text-align:center; padding:8px; border-bottom:3px solid #ff00ff; }
+  .navbar a { color:#00ffff; font-weight:bold; font-size:13px; text-decoration:none; margin:0 8px; padding:2px 8px; border:2px outset #00ffff; background:#000066; }
+  .navbar a:hover { background:#ff00ff; color:#000000; }
 
-  .listing-table {
-    width: 100%;
-    border: 3px ridge #ff00ff;
-    background: #000044;
-  }
+  .counter-strip { background:#000000; text-align:center; padding:6px; font-size:11px; color:#00ff00; font-family:"Courier New",monospace; border-bottom:1px solid #333; }
 
-  .listing-header-cell {
-    background: linear-gradient(90deg, #660000, #990066, #660000);
-    padding: 10px 16px;
-    border-bottom: 2px solid #ff00ff;
-  }
+  .divider-row td { padding:10px 20px; text-align:center; }
+  .divider-hearts { color:#ff69b4; font-size:16px; letter-spacing:6px; }
 
-  .ad-number {
-    font-family: "Courier New", monospace;
-    font-size: 10px;
-    color: #aaaaaa;
-    display: block;
-    margin-bottom: 2px;
-  }
+  .listing-table { width:100%; border:3px ridge #ff00ff; background:#000044; }
+  .listing-header-cell { background:linear-gradient(90deg,#660000,#990066,#660000); padding:10px 16px; border-bottom:2px solid #ff00ff; }
+  .ad-number { font-family:"Courier New",monospace; font-size:10px; color:#aaaaaa; display:block; margin-bottom:2px; }
+  .listing-headline { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#ffff00; text-shadow:2px 2px 0 #ff0000; text-transform:uppercase; letter-spacing:1px; }
+  .listing-photo { width:200px; border:4px ridge #ff00ff; display:block; }
+  .photo-table { float:left; margin:0 16px 8px 0; }
+  .photo-caption-cell { background:#330033; text-align:center; padding:4px; font-size:10px; color:#ff69b4; font-family:"Courier New",monospace; border-top:1px solid #ff00ff; }
+  .copy-cell { padding:12px 16px; color:#ffffff; font-size:14px; line-height:1.6; }
+  .person-name-h2 { font-family:"Impact","Arial Black",sans-serif; font-size:28px; color:#ff00ff; text-shadow:2px 2px 0 #000000; margin:0 0 2px 0; }
+  .vitals { font-family:"Courier New",monospace; font-size:11px; color:#00ffff; margin-bottom:10px; }
+  .copy-body { font-size:13px; color:#ffffcc; margin-bottom:10px; line-height:1.65; }
+  .review-box { background:#1a0033; border:2px dashed #ff00ff; padding:10px 12px; margin:10px 0; font-size:12px; color:#ffccff; line-height:1.6; }
+  .review-byline { color:#ff69b4; font-size:11px; font-family:"Courier New",monospace; font-weight:bold; margin-bottom:6px; display:block; }
+  .intentions-box { background:#001a00; border:2px solid #00ff00; padding:10px 12px; margin:10px 0; font-size:13px; color:#ccffcc; line-height:1.65; }
+  .wants-box { background:#330000; border-left:6px solid #ff0000; padding:8px 12px; margin:10px 0; font-size:13px; color:#ffcccc; font-style:italic; }
+  .wants-label { color:#ff0000; font-weight:bold; font-style:normal; font-size:11px; font-family:"Courier New",monospace; text-transform:uppercase; display:block; margin-bottom:4px; }
+  .contact-strip { background:#000000; border-top:2px solid #ff00ff; padding:8px 12px; font-size:12px; color:#cccccc; font-family:"Courier New",monospace; }
+  .contact-strip a { color:#ffff00; font-weight:bold; }
+  .apply-btn { display:inline-block; background:#ff00ff; color:#000000; font-weight:bold; font-size:12px; padding:4px 14px; border:3px outset #ff99ff; text-decoration:none; font-family:"Comic Sans MS",sans-serif; margin-top:6px; }
+  .apply-btn:hover { background:#ffff00; }
+  .about-box { background:#001133; border:2px ridge #00ffff; padding:14px; margin:10px 20px; font-size:13px; color:#ccddff; }
+  .footer-cell { background:#330033; text-align:center; padding:16px; border-top:4px ridge #ff00ff; font-size:12px; color:#ff69b4; }
 
-  .listing-headline {
-    font-family: "Impact", "Arial Black", sans-serif;
-    font-size: 22px;
-    color: #ffff00;
-    text-shadow: 2px 2px 0 #ff0000;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+  .blink { animation:blink 1s infinite; }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .spin { display:inline-block; animation:spin 2s linear infinite; }
 
-  .listing-photo {
-    width: 200px;
-    border: 4px ridge #ff00ff;
-    display: block;
-  }
+  .rainbow span:nth-child(1){color:#ff0000} .rainbow span:nth-child(2){color:#ff7700}
+  .rainbow span:nth-child(3){color:#ffff00} .rainbow span:nth-child(4){color:#00ff00}
+  .rainbow span:nth-child(5){color:#0000ff} .rainbow span:nth-child(6){color:#ff00ff}
+  .rainbow span:nth-child(7){color:#ff0000} .rainbow span:nth-child(8){color:#ff7700}
+  .rainbow span:nth-child(9){color:#ffff00} .rainbow span:nth-child(10){color:#00ff00}
+  .rainbow span:nth-child(11){color:#0000ff} .rainbow span:nth-child(12){color:#ff00ff}
+  .rainbow span:nth-child(13){color:#ff0000} .rainbow span:nth-child(14){color:#ff7700}
+  .rainbow span:nth-child(15){color:#ffff00} .rainbow span:nth-child(16){color:#00ff00}
 
-  .photo-table {
-    float: left;
-    margin: 0 16px 8px 0;
-  }
+  hr.fancy { border:none; border-top:2px dashed #ff00ff; margin:6px 0; }
+  .cf::after { content:""; display:table; clear:both; }
 
-  .photo-caption-cell {
-    background: #330033;
-    text-align: center;
-    padding: 4px;
-    font-size: 10px;
-    color: #ff69b4;
-    font-family: "Courier New", monospace;
-    border-top: 1px solid #ff00ff;
-  }
+  /* FUN BOXES */
+  .fun-box { background:#1a001a; border:3px ridge #ff00ff; padding:16px; margin:10px 20px; text-align:center; font-family:"Comic Sans MS",sans-serif; }
+  .fun-box h3 { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#ff00ff; text-shadow:2px 2px 0 #ff0000; margin:0 0 10px 0; }
+  .fun-input { background:#000033; border:2px inset #ff00ff; color:#ffff00; font-family:"Comic Sans MS",sans-serif; font-size:13px; padding:4px 8px; width:180px; }
+  .fun-btn { background:#ff00ff; color:#000000; font-weight:bold; font-size:13px; padding:4px 16px; border:3px outset #ff99ff; font-family:"Comic Sans MS",sans-serif; margin:8px auto 0; display:block; }
+  .fun-btn:hover { background:#ffff00; }
+  #love-result { margin-top:12px; font-size:15px; font-weight:bold; color:#ff69b4; min-height:24px; }
+  #love-bar-wrap { width:80%; margin:8px auto; background:#330033; border:2px solid #ff00ff; height:20px; display:none; }
+  #love-bar { height:100%; background:linear-gradient(90deg,#ff0000,#ff00ff,#ff69b4); width:0%; transition:width 1s ease; }
 
-  .copy-cell {
-    padding: 12px 16px;
-    color: #ffffff;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .person-name-h2 {
-    font-family: "Impact", "Arial Black", sans-serif;
-    font-size: 28px;
-    color: #ff00ff;
-    text-shadow: 2px 2px 0 #000000;
-    margin: 0 0 2px 0;
-  }
-
-  .vitals {
-    font-family: "Courier New", monospace;
-    font-size: 11px;
-    color: #00ffff;
-    margin-bottom: 10px;
-  }
-
-  .copy-body {
-    font-size: 13px;
-    color: #ffffcc;
-    margin-bottom: 10px;
-    line-height: 1.65;
-  }
-
-  .review-box {
-    background: #1a0033;
-    border: 2px dashed #ff00ff;
-    padding: 10px 12px;
-    margin: 10px 0;
-    font-size: 12px;
-    color: #ffccff;
-    line-height: 1.6;
-  }
-  .review-byline {
-    color: #ff69b4;
-    font-size: 11px;
-    font-family: "Courier New", monospace;
-    font-weight: bold;
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  .intentions-box {
-    background: #001a00;
-    border: 2px solid #00ff00;
-    padding: 10px 12px;
-    margin: 10px 0;
-    font-size: 13px;
-    color: #ccffcc;
-    line-height: 1.65;
-  }
-
-  .wants-box {
-    background: #330000;
-    border-left: 6px solid #ff0000;
-    padding: 8px 12px;
-    margin: 10px 0;
-    font-size: 13px;
-    color: #ffcccc;
-    font-style: italic;
-  }
-  .wants-label {
-    color: #ff0000;
-    font-weight: bold;
-    font-style: normal;
-    font-size: 11px;
-    font-family: "Courier New", monospace;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .contact-strip {
-    background: #000000;
-    border-top: 2px solid #ff00ff;
-    padding: 8px 12px;
-    font-size: 12px;
-    color: #cccccc;
-    font-family: "Courier New", monospace;
-  }
-  .contact-strip a {
-    color: #ffff00;
-    font-weight: bold;
-  }
-
-  .apply-btn {
-    display: inline-block;
-    background: #ff00ff;
-    color: #000000;
-    font-weight: bold;
-    font-size: 12px;
-    padding: 4px 14px;
-    border: 3px outset #ff99ff;
-    text-decoration: none;
-    font-family: "Comic Sans MS", sans-serif;
-    margin-top: 6px;
-    cursor: pointer;
-  }
-  .apply-btn:hover {
-    background: #ffff00;
-  }
-
-  .about-box {
-    background: #001133;
-    border: 2px ridge #00ffff;
-    padding: 14px;
-    margin: 10px 20px;
-    font-size: 13px;
-    color: #ccddff;
-  }
-
-  .footer-cell {
-    background: #330033;
-    text-align: center;
-    padding: 16px;
-    border-top: 4px ridge #ff00ff;
-    font-size: 12px;
-    color: #ff69b4;
-  }
-
-  @keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
-  }
-  .blink { animation: blink 1s infinite; }
-
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .spin { display: inline-block; animation: spin 2s linear infinite; }
-
-  .rainbow span:nth-child(1) { color: #ff0000; }
-  .rainbow span:nth-child(2) { color: #ff7700; }
-  .rainbow span:nth-child(3) { color: #ffff00; }
-  .rainbow span:nth-child(4) { color: #00ff00; }
-  .rainbow span:nth-child(5) { color: #0000ff; }
-  .rainbow span:nth-child(6) { color: #ff00ff; }
-  .rainbow span:nth-child(7) { color: #ff0000; }
-  .rainbow span:nth-child(8) { color: #ff7700; }
-  .rainbow span:nth-child(9) { color: #ffff00; }
-  .rainbow span:nth-child(10) { color: #00ff00; }
-  .rainbow span:nth-child(11) { color: #0000ff; }
-  .rainbow span:nth-child(12) { color: #ff00ff; }
-  .rainbow span:nth-child(13) { color: #ff0000; }
-  .rainbow span:nth-child(14) { color: #ff7700; }
-  .rainbow span:nth-child(15) { color: #ffff00; }
-  .rainbow span:nth-child(16) { color: #00ff00; }
-
-  hr.fancy {
-    border: none;
-    border-top: 2px dashed #ff00ff;
-    margin: 6px 0;
-  }
-
-  .cf::after { content: ""; display: table; clear: both; }
+  #eightball { width:120px; height:120px; background:radial-gradient(circle at 35% 35%,#444,#000); border-radius:50%; margin:12px auto; display:flex; align-items:center; justify-content:center; border:4px ridge #333; box-shadow:0 0 20px #ff00ff88; cursor:pointer; }
+  #eightball-inner { width:70px; height:70px; background:radial-gradient(circle at 40% 40%,#1a1aff,#000066); border-radius:50%; display:flex; align-items:center; justify-content:center; text-align:center; font-family:"Comic Sans MS",sans-serif; font-size:11px; color:#aaccff; font-weight:bold; padding:6px; line-height:1.3; transition:all 0.3s; }
+  #ball-answer { font-size:13px; color:#ff69b4; margin-top:8px; font-weight:bold; min-height:20px; }
+  @keyframes ballShake { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
+  .shaking { animation:ballShake 0.4s ease 3; }
 </style>
 </head>
 <body>
+
+<div id="starfield"></div>
+<div id="sparkle-container"></div>
 
 <div class="marquee-bar">
   <marquee scrollamount="4">
@@ -328,285 +118,340 @@
     <td class="header-cell">
       <span class="site-title">Eastside Roomies</span>
       <div class="hearts-row">&#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829;</div>
-      <div class="subtitle">
-        <span class="spin">&#10022;</span>
-        &nbsp;~*~ AND THEY WERE ROOMMATES ~*~&nbsp;
-        <span class="spin">&#10022;</span>
-      </div>
-      <div style="margin-top:8px; font-size:12px; color:#ffccff;">
-        <span class="blink">&#9733; YOU PROBABLY WON'T REGRET IT &#9733;</span>
-      </div>
+      <div class="subtitle"><span class="spin">&#10022;</span> &nbsp;~*~ AND THEY WERE ROOMMATES ~*~&nbsp; <span class="spin">&#10022;</span></div>
+      <div style="margin-top:8px;font-size:12px;color:#ffccff;"><span class="blink">&#9733; YOU PROBABLY WON'T REGRET IT &#9733;</span></div>
     </td>
   </tr>
 
   <tr>
     <td class="navbar">
       <a href="#listings">[ CANDIDATES ]</a>
-      <a href="#about">[ ABOUT US ]</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform" target="_blank">[ APPLY NOW!! ]</a>
+      <a href="#lovecalc">[ LOVE CALC ]</a>
+      <a href="#magic8">[ MAGIC 8-BALL ]</a>
+      <a href="#about">[ ABOUT ]</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform" target="_blank">[ APPLY!! ]</a>
     </td>
   </tr>
 
   <tr>
     <td class="counter-strip">
-      MADISON, WI
-      &nbsp;&nbsp;|&nbsp;&nbsp; SCHENK-ATWOOD
-      &nbsp;&nbsp;|&nbsp;&nbsp; EARTH
+      MADISON, WI &nbsp;|&nbsp; SCHENK-ATWOOD &nbsp;|&nbsp; EARTH &nbsp;|&nbsp;
+      Visitors: <span id="hitcount" style="color:#ffff00;font-weight:bold;">4,209</span>
     </td>
   </tr>
 
   <tr id="listings">
-    <td style="text-align:center; padding: 18px 20px 6px;">
-      <font face="Impact, Arial Black" size="5" color="#00ffff">~ CANDIDATES ~</font>
-      <br>
-      <font face="Comic Sans MS" size="2" color="#ffccff">
-        Email with the subject line shown! Include your Instagram OR a PowerPoint on why you deserve a date, plus your answer to their question.
-      </font>
+    <td style="text-align:center;padding:18px 20px 6px;">
+      <font face="Impact, Arial Black" size="5" color="#00ffff">~ CANDIDATES ~</font><br>
+      <font face="Comic Sans MS" size="2" color="#ffccff">Email with the subject line shown! Include your Instagram OR a PowerPoint, plus your answer to their question.</font>
     </td>
   </tr>
 
   <!-- GIDEON -->
-  <tr>
-    <td style="padding: 10px 20px;">
-      <table class="listing-table" cellpadding="0" cellspacing="0" id="gideon">
-        <tr>
-          <td class="listing-header-cell">
-            <span class="ad-number">PERSONAL AD &numero; 001</span>
-            <span class="listing-headline">&#128506; CHAOTIC GOOD HUMAN SEEKING PARTNER IN CRIME &#128506;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="copy-cell cf">
-            <table class="photo-table" cellpadding="0" cellspacing="0">
-              <tr><td><img src="gideon.JPG" class="listing-photo" alt="Gideon"></td></tr>
-              <tr><td class="photo-caption-cell">GIDEON &bull; 24 &bull; 5'9"</td></tr>
-            </table>
- 
-            <h2 class="person-name-h2">Gideon</h2>
-            <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
- 
-            <p class="copy-body">
-              Gideon is a walking contradiction in the best possible way: <font color="#ffff00"><b>adventurous enough to find the nearest kombucha bar in any city on earth,</b></font> chaotic enough to fill it with knickknacks he definitely didn't need. A creative nerdy type who is somehow also athletic, outdoorsy, and will be at a concert, on a trail, in a kitchen, at a gallery, and on a dance floor <i>all in the same weekend.</i> He cooks, he hikes, he games, he reads &mdash; the man contains multitudes.
-            </p>
-            <p class="copy-body">
-              Fair warning: he will rant about urbanism <font color="#ff6666"><b>at least once a day,</b></font> and you will either find it fascinating or learn to find it fascinating. His friends describe him as <font color="#00ffff"><i>"surprisingly worldly &mdash; most likely to know where the nearest kombucha bar is."</i></font> His enemies have not been reached for comment.
-            </p>
-            <p class="copy-body">
-              <font color="#ff69b4"><b>Known quirks:</b></font> He sneezes when he gets full <font color="#aaaaaa">(yes, really)</font>, which is the most endearing and unhinged quality a person can have. Also a <b>collector of knickknacks</b> &mdash; if you have strong opinions about shelf space, proceed with caution.
-            </p>
- 
-            <div class="intentions-box">
-              <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Looking for something real &mdash; a genuine connection with someone he can drag on spontaneous adventures and stay up too late talking to.<br><br>
-              <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone funny, creative, and weird in a good way. Emotionally intelligent enough to call him out and ambitious enough to have their own thing going on. Doesn't need to share every hobby &mdash; just needs to have a pulse on <i>something</i> they love. Spontaneous a plus. Boring is a dealbreaker.
-            </div>
- 
-            <div class="wants-box">
-              <span class="wants-label">&#9658; GIDEON WANTS TO KNOW:</span>
-              A wizard gives you one animal's ability but you also have to take on one of its worst traits. What do you pick?
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="contact-strip">
-            <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date Gideon"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+  <tr><td style="padding:10px 20px;">
+    <table class="listing-table" cellpadding="0" cellspacing="0" id="gideon">
+      <tr><td class="listing-header-cell">
+        <span class="ad-number">PERSONAL AD &numero; 001</span>
+        <span class="listing-headline">&#128506; CHAOTIC GOOD HUMAN SEEKING PARTNER IN CRIME &#128506;</span>
+      </td></tr>
+      <tr><td class="copy-cell cf">
+        <table class="photo-table" cellpadding="0" cellspacing="0">
+          <tr><td><img src="gideon.JPG" class="listing-photo" alt="Gideon"></td></tr>
+          <tr><td class="photo-caption-cell">GIDEON &bull; 24 &bull; 5'9"</td></tr>
+        </table>
+        <h2 class="person-name-h2">Gideon</h2>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+        <p class="copy-body">Gideon is a walking contradiction in the best possible way: <font color="#ffff00"><b>adventurous enough to find the nearest kombucha bar in any city on earth,</b></font> chaotic enough to fill it with knickknacks he definitely didn't need. A creative nerdy type who is somehow also athletic, outdoorsy, and will be at a concert, on a trail, in a kitchen, at a gallery, and on a dance floor <i>all in the same weekend.</i> He cooks, he hikes, he games, he reads &mdash; the man contains multitudes.</p>
+        <p class="copy-body">Fair warning: he will rant about urbanism <font color="#ff6666"><b>at least once a day,</b></font> and you will either find it fascinating or learn to find it fascinating. His friends describe him as <font color="#00ffff"><i>"surprisingly worldly &mdash; most likely to know where the nearest kombucha bar is."</i></font> His enemies have not been reached for comment.</p>
+        <p class="copy-body"><font color="#ff69b4"><b>Known quirks:</b></font> He sneezes when he gets full <font color="#aaaaaa">(yes, really)</font> &mdash; the most endearing and unhinged quality a person can have. Also a <b>collector of knickknacks</b> &mdash; strong opinions about shelf space? Proceed with caution.</p>
+        <div class="intentions-box">
+          <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Looking for something real &mdash; a genuine connection with someone he can drag on spontaneous adventures and stay up too late talking to.<br><br>
+          <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone funny, creative, and weird in a good way. Emotionally intelligent enough to call him out, ambitious enough to have their own thing going on. Doesn't need to share every hobby &mdash; just needs to have a pulse on <i>something</i> they love. Spontaneous a plus. Boring is a dealbreaker.
+        </div>
+        <div class="wants-box">
+          <span class="wants-label">&#9658; GIDEON WANTS TO KNOW:</span>
+          A wizard gives you one animal's ability but you also have to take on one of its worst traits. What do you pick?
+        </div>
+      </td></tr>
+      <tr><td class="contact-strip">
+        <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date Gideon"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
+      </td></tr>
+    </table>
+  </td></tr>
 
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
   <!-- TY -->
-  <tr>
-    <td style="padding: 10px 20px;">
-      <table class="listing-table" cellpadding="0" cellspacing="0" id="ty">
-        <tr>
-          <td class="listing-header-cell">
-            <span class="ad-number">PERSONAL AD &numero; 002</span>
-            <span class="listing-headline">&#128049; BIG DAWG SEEKING TENDER CARE AND AFFECTION &#128049;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="copy-cell cf">
-            <table class="photo-table" cellpadding="0" cellspacing="0">
-              <tr><td><img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQx5Yr7zXduj_aOmIM55r7Nxx_GJc2rfB0EtoUtxvvN-TImvDb3NovM78X2U9t3nknKiq5u-KufJFjiOLHewQ6ErFsPYg3bdepODg46wl68nMCtUrOt6qdPRzZGlkDYWIi9hS_bS16ajjpKZTG5QkvRhc0AO5Tl0wnBqF16yTChksveDH5MmeZJ5I8mQQyjCY10iLRvjqXpIdPBNcpta2dqZEzn9elVo3QnZ6c=w1280" class="listing-photo" alt="Ty"></td></tr>
-              <tr><td class="photo-caption-cell">TY &bull; 22 &bull; 5'11" (NOT 6')</td></tr>
-            </table>
-
-            <h2 class="person-name-h2">Ty</h2>
-            <div class="vitals">&gt; AGE: 22 &nbsp;&gt; HEIGHT: 5'11" (HONEST) &nbsp;&gt; MAJOR: BIOMEDICAL ENGINEERING</div>
-            <p class="copy-body">A "work hard, play hard" kind of guy &mdash; works a <i>lot</i> harder than he plays and hopes to remedy this immediately. Honest to his own detriment (refer to height which could, but does not, begin with 6). Lifts <b><font color="#ffff00">5 days a week</font></b>, tries to go before 9am &mdash; ~60% success rate. 50% success rate with funny jokes, which is pretty good for a man.</p>
-            <p class="copy-body">
-            <font color="#00ffff"><b>PROS:</b></font> Very good cook &bull; Emotionally mature &bull; Confident &bull; Great freestyle dancer &bull; Can bench you + will ask to bench you &bull; Romantic (you'll have to race him to open doors) &bull; HAS gone to therapy.<br>
-            <font color="#ff9999"><b>CONS:</b></font> Strong food preferences &bull; Tons of hobbies, not great at any &bull; Mediocre ballroom dancer.</p>
-
-            <div class="review-box">
-              <span class="review-byline">&#9733; REVIEW FROM FRIEND LANA:</span>
-              "Ty is a very genuine person. Non-defensive in conversation. In the <b>Top 3 Men I Feel Safe Around&#8482;</b> &mdash; the pool being every man I've ever met. First time I got to know him, he asked someone to show him how to shake ass and <i>went for it.</i> Yes, it was good. Does not froth at the mouth. A-grade Diva /pos. Highly recommend."
-            </div>
-
-            <div class="intentions-box">
-              <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> EXPIRES 5/31 &mdash; graduating, moving to MN end of May. Get him while he's here! Fun dates until he leaves.<br><br>
-              <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone uninhibited and unafraid of being cringe. Physical type: <i>"people I find attractive"</i> &mdash; an incredibly broad spectrum.
-            </div>
-
-            <div class="wants-box">
-              <span class="wants-label">&#9658; TY WANTS TO KNOW:</span>
-              How do you feel about biomedical engineering and what's the most unethical thing you wish you could do with it?
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="contact-strip">
-            <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date Ty"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+  <tr><td style="padding:10px 20px;">
+    <table class="listing-table" cellpadding="0" cellspacing="0" id="ty">
+      <tr><td class="listing-header-cell">
+        <span class="ad-number">PERSONAL AD &numero; 002</span>
+        <span class="listing-headline">&#128049; BIG DAWG SEEKING TENDER CARE AND AFFECTION &#128049;</span>
+      </td></tr>
+      <tr><td class="copy-cell cf">
+        <table class="photo-table" cellpadding="0" cellspacing="0">
+          <tr><td><img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQx5Yr7zXduj_aOmIM55r7Nxx_GJc2rfB0EtoUtxvvN-TImvDb3NovM78X2U9t3nknKiq5u-KufJFjiOLHewQ6ErFsPYg3bdepODg46wl68nMCtUrOt6qdPRzZGlkDYWIi9hS_bS16ajjpKZTG5QkvRhc0AO5Tl0wnBqF16yTChksveDH5MmeZJ5I8mQQyjCY10iLRvjqXpIdPBNcpta2dqZEzn9elVo3QnZ6c=w1280" class="listing-photo" alt="Ty"></td></tr>
+          <tr><td class="photo-caption-cell">TY &bull; 22 &bull; 5'11" (NOT 6')</td></tr>
+        </table>
+        <h2 class="person-name-h2">Ty</h2>
+        <div class="vitals">&gt; AGE: 22 &nbsp;&gt; HEIGHT: 5'11" (HONEST) &nbsp;&gt; MAJOR: BIOMEDICAL ENGINEERING</div>
+        <p class="copy-body">A "work hard, play hard" kind of guy &mdash; works a <i>lot</i> harder than he plays and hopes to remedy this immediately. Honest to his own detriment (refer to height which could, but does not, begin with 6). Lifts <b><font color="#ffff00">5 days a week</font></b>, tries before 9am &mdash; ~60% success rate. 50% success rate with funny jokes, which is pretty good for a man.</p>
+        <p class="copy-body"><font color="#00ffff"><b>PROS:</b></font> Very good cook &bull; Emotionally mature &bull; Confident &bull; Great freestyle dancer &bull; Can bench you + will ask to bench you &bull; Romantic &bull; HAS gone to therapy.<br>
+        <font color="#ff9999"><b>CONS:</b></font> Strong food preferences &bull; Tons of hobbies, not great at any &bull; Mediocre ballroom dancer.</p>
+        <div class="review-box">
+          <span class="review-byline">&#9733; REVIEW FROM FRIEND LANA:</span>
+          "Ty is a very genuine person. Non-defensive in conversation. In the <b>Top 3 Men I Feel Safe Around&#8482;</b> &mdash; the pool being every man I've ever met. First time I got to know him, he asked someone to show him how to shake ass and <i>went for it.</i> Yes, it was good. Does not froth at the mouth. A-grade Diva /pos. Highly recommend."
+        </div>
+        <div class="intentions-box">
+          <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> EXPIRES 5/31 &mdash; graduating, moving to MN end of May. Get him while he's here!<br><br>
+          <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone uninhibited and unafraid of being cringe. Physical type: <i>"people I find attractive"</i> &mdash; an incredibly broad spectrum.
+        </div>
+        <div class="wants-box">
+          <span class="wants-label">&#9658; TY WANTS TO KNOW:</span>
+          How do you feel about biomedical engineering and what's the most unethical thing you wish you could do with it?
+        </div>
+      </td></tr>
+      <tr><td class="contact-strip">
+        <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date Ty"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
+      </td></tr>
+    </table>
+  </td></tr>
 
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
   <!-- OLIVIA -->
-  <tr>
-    <td style="padding: 10px 20px;">
-      <table class="listing-table" cellpadding="0" cellspacing="0" id="olivia">
-        <tr>
-          <td class="listing-header-cell">
-            <span class="ad-number">PERSONAL AD &numero; 003</span>
-            <span class="listing-headline">&#9889; FREE WOMAN SEEKING COMPANION(S) FOR QUESTS &#9889;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="copy-cell cf">
-            <table class="photo-table" cellpadding="0" cellspacing="0">
-              <tr><td><img src="https://lh3.googleusercontent.com/sitesv/APaQ0STTQTvUUDV-GNdPzXDvhrchUBvkbCMI4V26WWDNCUdB7Jyx3nEC0EyiHDJjfw28xRNEwyV0oCv0b0shVn1rUV4FXxv6dr_wMC_qhcZRNq1fSrMntkaoa9XSNj1c9kb93CIe8th7fsX0Fd1aS1Ji9zfRMYXb_SnmOdQnvmTjKCdDiH3qlBwnRCNgKVjdGDZrauZmH5cXUu6bgOhwnsmG0cWKdXFKwwdWuwAslpE=w1280" class="listing-photo" alt="Olivia"></td></tr>
-              <tr><td class="photo-caption-cell">OLIVIA &bull; 22 &bull; 5'5" &bull; ELECTRICIAN</td></tr>
-            </table>
-
-            <h2 class="person-name-h2">Olivia</h2>
-            <div class="vitals">&gt; AGE: 22 &nbsp;&gt; HEIGHT: 5'5" &nbsp;&gt; JOB: APPRENTICE ELECTRICIAN (U WILL HAVE A SPARK)</div>
-            <p class="copy-body">This is an <font color="#ffff00"><b>electric woman.</b></font> Apprenticing to be an electrician &mdash; you KNOW you'll have a spark with her. Morning riser who can still rally to go out dancing. As a free spirit, she wanders from new friend to new friend in any room.</p>
-            <p class="copy-body">Self-described as awkward, she lives life more through actions than words. Calisthenics queen. Once persuaded everyone at a rock concert to stop glaring while jumping around &mdash; and inadvertently <i>included neighbors in moshing.</i></p>
-
-            <div class="intentions-box">
-              <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Discovering her freedom after a 3-year relationship &mdash; currently in her <font color="#ffff00">hyper-independence era.</font> Motto: <i>"If it's in the name of fun, let's do it."</i><br><br>
-              <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Allergic to date-dates but totally down for new friends. If it turns into more, cool &mdash; just don't try to lock her down!
-            </div>
-
-            <div class="wants-box">
-              <span class="wants-label">&#9658; OLIVIA WANTS TO KNOW:</span>
-              What's the wildest thing we could do together? (PG-13, perverts.)
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="contact-strip">
-            <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date (or befriend) Olivia"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+  <tr><td style="padding:10px 20px;">
+    <table class="listing-table" cellpadding="0" cellspacing="0" id="olivia">
+      <tr><td class="listing-header-cell">
+        <span class="ad-number">PERSONAL AD &numero; 003</span>
+        <span class="listing-headline">&#9889; FREE WOMAN SEEKING COMPANION(S) FOR QUESTS &#9889;</span>
+      </td></tr>
+      <tr><td class="copy-cell cf">
+        <table class="photo-table" cellpadding="0" cellspacing="0">
+          <tr><td><img src="https://lh3.googleusercontent.com/sitesv/APaQ0STTQTvUUDV-GNdPzXDvhrchUBvkbCMI4V26WWDNCUdB7Jyx3nEC0EyiHDJjfw28xRNEwyV0oCv0b0shVn1rUV4FXxv6dr_wMC_qhcZRNq1fSrMntkaoa9XSNj1c9kb93CIe8th7fsX0Fd1aS1Ji9zfRMYXb_SnmOdQnvmTjKCdDiH3qlBwnRCNgKVjdGDZrauZmH5cXUu6bgOhwnsmG0cWKdXFKwwdWuwAslpE=w1280" class="listing-photo" alt="Olivia"></td></tr>
+          <tr><td class="photo-caption-cell">OLIVIA &bull; 22 &bull; 5'5" &bull; ELECTRICIAN</td></tr>
+        </table>
+        <h2 class="person-name-h2">Olivia</h2>
+        <div class="vitals">&gt; AGE: 22 &nbsp;&gt; HEIGHT: 5'5" &nbsp;&gt; JOB: APPRENTICE ELECTRICIAN (U WILL HAVE A SPARK)</div>
+        <p class="copy-body">This is an <font color="#ffff00"><b>electric woman.</b></font> Apprenticing to be an electrician &mdash; you KNOW you'll have a spark with her. Morning riser who can still rally to go out dancing. As a free spirit, she wanders from new friend to new friend in any room.</p>
+        <p class="copy-body">Self-described as awkward, she lives life more through actions than words. Calisthenics queen. Once persuaded everyone at a rock concert to stop glaring while jumping around &mdash; and inadvertently <i>included neighbors in moshing.</i></p>
+        <div class="intentions-box">
+          <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Discovering her freedom after a 3-year relationship &mdash; currently in her <font color="#ffff00">hyper-independence era.</font> Motto: <i>"If it's in the name of fun, let's do it."</i><br><br>
+          <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Allergic to date-dates but totally down for new friends. If it turns into more, cool &mdash; just don't try to lock her down!
+        </div>
+        <div class="wants-box">
+          <span class="wants-label">&#9658; OLIVIA WANTS TO KNOW:</span>
+          What's the wildest thing we could do together? (PG-13, perverts.)
+        </div>
+      </td></tr>
+      <tr><td class="contact-strip">
+        <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date (or befriend) Olivia"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
+      </td></tr>
+    </table>
+  </td></tr>
 
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
   <!-- CAITLIN -->
-  <tr>
-    <td style="padding: 10px 20px;">
-      <table class="listing-table" cellpadding="0" cellspacing="0" id="caitlin">
-        <tr>
-          <td class="listing-header-cell">
-            <span class="ad-number">PERSONAL AD &numero; 004</span>
-            <span class="listing-headline">&#127928; POETIC SIREN SEEKING ARTISTIC COMPANION(S) &#127928;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="copy-cell cf">
-            <table class="photo-table" cellpadding="0" cellspacing="0">
-              <tr><td><img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQQA3duRBCYk2q7LSdJwKg5sHHY0s4NHXnA2YRrgbpWwwH39NqX1B9MTeYcqHrU3bgaA8q364nYo2s3SxXj5fDWEb0gl9vxDdH7UemZzZfua8R0CwGB1smp_IlIwPf_YdevwifEi1ifjjCQBw3dhUNUSH23cWFnScvWBbAc0YsvwR6guMoMURvyews=w1280" class="listing-photo" alt="Caitlin"></td></tr>
-              <tr><td class="photo-caption-cell">CAITLIN &bull; 24 &bull; 5'3" &bull; ART THERAPIST</td></tr>
-            </table>
+  <tr><td style="padding:10px 20px;">
+    <table class="listing-table" cellpadding="0" cellspacing="0" id="caitlin">
+      <tr><td class="listing-header-cell">
+        <span class="ad-number">PERSONAL AD &numero; 004</span>
+        <span class="listing-headline">&#127928; POETIC SIREN SEEKING ARTISTIC COMPANION(S) &#127928;</span>
+      </td></tr>
+      <tr><td class="copy-cell cf">
+        <table class="photo-table" cellpadding="0" cellspacing="0">
+          <tr><td><img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQQA3duRBCYk2q7LSdJwKg5sHHY0s4NHXnA2YRrgbpWwwH39NqX1B9MTeYcqHrU3bgaA8q364nYo2s3SxXj5fDWEb0gl9vxDdH7UemZzZfua8R0CwGB1smp_IlIwPf_YdevwifEi1ifjjCQBw3dhUNUSH23cWFnScvWBbAc0YsvwR6guMoMURvyews=w1280" class="listing-photo" alt="Caitlin"></td></tr>
+          <tr><td class="photo-caption-cell">CAITLIN &bull; 24 &bull; 5'3" &bull; ART THERAPIST</td></tr>
+        </table>
+        <h2 class="person-name-h2">Caitlin</h2>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HEIGHT: 5'3" &nbsp;&gt; JOBS: ART THERAPIST-IN-TRAINING + BARTENDER</div>
+        <p class="copy-body">A versatile artist who will write a poem that ignites a moment of clarity for you. She paints, draws, sings, writes, and plays guitar. Will attempt to play <i>any instrument in front of her,</i> fair warning. Personal Amy Winehouse + Layne Staley impersonator &mdash; will lull you to sleep OR yell you awake.</p>
+        <p class="copy-body">Found in the zone at <font color="#ff00ff">raves</font> OR in <font color="#ffff00">blanket forts</font> &mdash; big chiller. A black cat who can cleanse a space of icky energy and read your tarot. In school to be an art therapist AND currently a bartender &mdash; covered on both ends.</p>
+        <div class="review-box">
+          <span class="review-byline">&#9733; REVIEW FROM FRIEND FINN:</span>
+          "She will either see right to your soul or give a good hug when needed. Keeps her apartment clean. Sleeps like concrete a lot but also stays up until 4am. Has a cat named Peter. Vibey interior decorating taste."
+        </div>
+        <div class="intentions-box">
+          <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Playing an open field, no expectations! Open minded, as a true thinker should be.<br><br>
+          <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Mr.s and Misses &mdash; will date anyone who comes with love in their heart and EDM beats on their minds. Likes her freedom. Stand with her while she lives her life and earn brownie points + a kiss.
+        </div>
+        <div class="wants-box">
+          <span class="wants-label">&#9658; CAITLIN WANTS TO KNOW:</span>
+          How would you make Peter the Cat's life better?
+        </div>
+      </td></tr>
+      <tr><td class="contact-strip">
+        <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date Caitlin"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
+      </td></tr>
+    </table>
+  </td></tr>
 
-            <h2 class="person-name-h2">Caitlin</h2>
-            <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HEIGHT: 5'3" &nbsp;&gt; JOBS: ART THERAPIST-IN-TRAINING + BARTENDER</div>
-            <p class="copy-body">A versatile artist who will write a poem that ignites a moment of clarity for you. She paints, draws, sings, writes, and plays guitar. Will attempt to play <i>any instrument in front of her,</i> fair warning. Personal Amy Winehouse + Layne Staley impersonator &mdash; will lull you to sleep OR yell you awake (roommate attests to this).</p>
-            <p class="copy-body">Found in the zone at <font color="#ff00ff">raves</font> OR in <font color="#ffff00">blanket forts</font> &mdash; big chiller. A black cat who can cleanse a space of icky energy and read your tarot. Has serious internal emotional problems? She's in school to be an art therapist AND currently a bartender &mdash; covered on both ends.</p>
+  <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
-            <div class="review-box">
-              <span class="review-byline">&#9733; REVIEW FROM FRIEND FINN:</span>
-              "She will either see right to your soul or give a good hug when needed. Keeps her apartment clean. Sleeps like concrete a lot but also stays up until 4am. Has a cat named Peter. Vibey interior decorating taste."
-            </div>
+  <!-- LOVE CALCULATOR -->
+  <tr id="lovecalc"><td style="padding:10px 20px;">
+    <div class="fun-box">
+      <h3>&#128149; LOVE COMPATIBILITY CALCULATOR &#128149;</h3>
+      <font face="Comic Sans MS" size="2" color="#ffccff">Are you destined for one of our candidates? FIND OUT NOW!!</font>
+      <br><br>
+      <label style="color:#ffff00;font-size:13px;">Your Name:</label><br>
+      <input type="text" id="name1" class="fun-input" placeholder="Your name..."><br><br>
+      <label style="color:#ffff00;font-size:13px;">Their Name:</label><br>
+      <input type="text" id="name2" class="fun-input" placeholder="e.g. Gideon, Ty, Olivia...">
+      <br>
+      <button class="fun-btn" onclick="calcLove()">&#10084; CALCULATE LOVE &#10084;</button>
+      <div id="love-bar-wrap"><div id="love-bar"></div></div>
+      <div id="love-result"></div>
+    </div>
+  </td></tr>
 
-            <div class="intentions-box">
-              <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Playing an open field, no expectations! Open minded, as a true thinker should be.<br><br>
-              <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Mr.s and Misses &mdash; will date anyone who comes with love in their heart and EDM beats on their minds. Likes her freedom. If you can stand with her while she lives her life, that'll get you brownie points and a kiss.
-            </div>
+  <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
-            <div class="wants-box">
-              <span class="wants-label">&#9658; CAITLIN WANTS TO KNOW:</span>
-              How would you make Peter the Cat's life better?
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="contact-strip">
-            <b>&#128140; CONTACT:</b> Email subject line <font color="#ffff00"><b>"date Caitlin"</b></font> &mdash; include Instagram or PowerPoint + your answer above.<br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn">&#9829; CLICK HERE TO APPLY &#9829;</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+  <!-- MAGIC 8-BALL -->
+  <tr id="magic8"><td style="padding:10px 20px;">
+    <div class="fun-box">
+      <h3>&#9899; MAGIC 8-BALL &#9899;</h3>
+      <font face="Comic Sans MS" size="2" color="#ffccff">Should you apply? Ask the ball. It knows.</font><br>
+      <input type="text" id="ball-question" class="fun-input" placeholder="Ask your question..." style="width:280px;margin-top:10px;"><br>
+      <div id="eightball" onclick="askBall()">
+        <div id="eightball-inner">&#9650;<br>8</div>
+      </div>
+      <font size="2" color="#aaaaaa">(click the ball)</font>
+      <div id="ball-answer"></div>
+    </div>
+  </td></tr>
 
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
   <!-- ABOUT -->
-  <tr id="about">
-    <td>
-      <div class="about-box">
-        <font face="Impact, Arial Black" size="4" color="#00ffff">WANT TO BE LISTED??</font>
-        <hr class="fancy">
-        <p style="margin-top:8px;">
-          Become one of our friends and <b><font color="#ffff00">pass the vibe check!</font></b><br>
-          Handmade classifieds. Real humans. Madison, WI. No bots. No algorithms. Just good people who deserve good dates. &#128149;
-        </p>
-        <p style="margin-top:10px;">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn" style="font-size:14px;">&#9733; SUBMIT AN APPLICATION &#9733;</a>
-        </p>
-      </div>
-    </td>
-  </tr>
+  <tr id="about"><td>
+    <div class="about-box">
+      <font face="Impact, Arial Black" size="4" color="#00ffff">WANT TO BE LISTED??</font>
+      <hr class="fancy">
+      <p style="margin-top:8px;">Become one of our friends and <b><font color="#ffff00">pass the vibe check!</font></b><br>
+      Handmade classifieds. Real humans. Madison, WI. No bots. No algorithms. Just good people who deserve good dates. &#128149;</p>
+      <p style="margin-top:10px;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank" class="apply-btn" style="font-size:14px;">&#9733; SUBMIT AN APPLICATION &#9733;</a></p>
+    </div>
+  </td></tr>
 
   <!-- FOOTER -->
-  <tr>
-    <td class="footer-cell">
-      <div class="rainbow" style="font-family:Impact,Arial Black; font-size:24px; letter-spacing:2px;">
-        <span>M</span><span>A</span><span>D</span><span>I</span><span>S</span><span>O</span><span>N</span>&nbsp;<span>P</span><span>E</span><span>R</span><span>S</span><span>O</span><span>N</span><span>A</span><span>L</span><span>S</span>
-      </div>
-      <br>
-      <font size="1" color="#9999cc">
-        &copy; 2024&ndash;2026 Madison Personals &bull; Madison, WI &bull; All Rights Reserved<br>
-        Best viewed in Netscape Navigator 4.0 at 800&times;600 resolution<br>
-        <span class="blink">&#9733;</span> Do not steal our graphics <span class="blink">&#9733;</span>
-        &nbsp;&bull;&nbsp; <a href="#listings" style="color:#ff69b4;">&#9650; Back to Top</a>
-      </font>
-      <br><br>
-      <font size="1" color="#555588">This page has been visited by <b>4,209</b> hopeless romantics.</font>
-    </td>
-  </tr>
+  <tr><td class="footer-cell">
+    <div class="rainbow" style="font-family:Impact,Arial Black;font-size:24px;letter-spacing:2px;">
+      <span>E</span><span>A</span><span>S</span><span>T</span><span>S</span><span>I</span><span>D</span><span>E</span>&nbsp;<span>R</span><span>O</span><span>O</span><span>M</span><span>I</span><span>E</span><span>S</span><span>!</span>
+    </div><br>
+    <font size="1" color="#9999cc">
+      &copy; 2024&ndash;2026 Eastside Roomies &bull; Madison, WI &bull; All Rights Reserved<br>
+      Best viewed in Netscape Navigator 4.0 at 800&times;600 resolution<br>
+      <span class="blink">&#9733;</span> Do not steal our graphics <span class="blink">&#9733;</span>
+      &nbsp;&bull;&nbsp; <a href="#listings" style="color:#ff69b4;">&#9650; Back to Top</a>
+    </font><br><br>
+    <font size="1" color="#555588">This page has been visited by <b id="hitcount">4,209</b> hopeless romantics.</font>
+  </td></tr>
 
 </table>
 
 <div class="marquee-bar">
   <marquee scrollamount="6" direction="right">
-    &hearts; FINN &hearts; TY &hearts; OLIVIA &hearts; CAITLIN &hearts; LOOKING FOR LOVE IN MADISON WI &hearts; ARE YOU THE ONE?? &hearts; APPLY TODAY &hearts;
+    &hearts; GIDEON &hearts; TY &hearts; OLIVIA &hearts; CAITLIN &hearts; LOOKING FOR LOVE IN MADISON WI &hearts; ARE YOU THE ONE?? &hearts; APPLY TODAY &hearts;
   </marquee>
 </div>
 
+<script>
+// STARFIELD
+(function(){
+  const sf = document.getElementById('starfield');
+  for(let i=0;i<80;i++){
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random()*3+1;
+    s.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation-duration:${Math.random()*4+2}s;animation-delay:${Math.random()*5}s;`;
+    sf.appendChild(s);
+  }
+})();
+
+// SPARKLE TRAIL
+const sparkleEmojis = ['✨','💖','⭐','💫','🌟','❤️','💕','🌸','💗','🌈'];
+let lastSparkle = 0;
+document.addEventListener('mousemove', function(e){
+  const now = Date.now();
+  if(now - lastSparkle < 55) return;
+  lastSparkle = now;
+  const el = document.createElement('div');
+  el.className = 'sparkle';
+  el.textContent = sparkleEmojis[Math.floor(Math.random()*sparkleEmojis.length)];
+  const dx = (Math.random()-0.5)*60;
+  const dy = (Math.random()-0.5)*60-20;
+  el.style.cssText = `left:${e.clientX-8}px;top:${e.clientY-8}px;--dx:${dx}px;--dy:${dy}px;`;
+  document.getElementById('sparkle-container').appendChild(el);
+  setTimeout(()=>el.remove(), 800);
+});
+
+// HIT COUNTER
+(function(){
+  let count = parseInt(localStorage.getItem('ec_hitcount')||'4209');
+  count++;
+  localStorage.setItem('ec_hitcount', count);
+  document.getElementById('hitcount').textContent = count.toLocaleString();
+})();
+
+// LOVE CALCULATOR
+function calcLove(){
+  const n1 = document.getElementById('name1').value.trim();
+  const n2 = document.getElementById('name2').value.trim();
+  if(!n1||!n2){ document.getElementById('love-result').textContent='⚠️ Enter both names first!!'; return; }
+  const combined = (n1+n2).toLowerCase();
+  let score = 0;
+  for(let i=0;i<combined.length;i++) score += combined.charCodeAt(i);
+  score = ((score*37)%71)+29;
+  const s1=new Set(n1.toLowerCase()), s2=new Set(n2.toLowerCase());
+  let shared=0; s1.forEach(c=>{ if(s2.has(c)) shared++; });
+  score = Math.min(99, score+shared*2);
+  const wrap = document.getElementById('love-bar-wrap');
+  const bar = document.getElementById('love-bar');
+  wrap.style.display='block';
+  setTimeout(()=>{ bar.style.width=score+'%'; },50);
+  let msg,emoji;
+  if(score>=90){msg="SOULMATES!! APPLY IMMEDIATELY!!";emoji="💘💘💘";}
+  else if(score>=75){msg="Very high compatibility!! Go for it!!";emoji="💖💖";}
+  else if(score>=60){msg="Good vibes!! Worth a shot!!";emoji="💕";}
+  else if(score>=45){msg="Could work with effort... maybe...";emoji="🤔";}
+  else if(score>=30){msg="The stars are... not aligned. Yet.";emoji="😬";}
+  else{msg="Yikes!! Perhaps try a different roomie.";emoji="💀";}
+  document.getElementById('love-result').innerHTML=`${emoji} <b>${n1}</b> + <b>${n2}</b> = <b>${score}% COMPATIBLE</b><br><span style="font-size:12px;">${msg}</span>`;
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('name2').addEventListener('keydown',function(e){ if(e.key==='Enter') calcLove(); });
+  document.getElementById('ball-question').addEventListener('keydown',function(e){ if(e.key==='Enter') askBall(); });
+});
+
+// MAGIC 8-BALL
+const ballResponses = [
+  "It is certain! ✨","Without a doubt! 💖","YES!! Apply now!!","Signs point to YES!",
+  "Outlook very good 🌟","Most likely!!","You may rely on it!","As I see it, yes!",
+  "Reply hazy... try again","Ask again later 🎱","Cannot predict now","Concentrate and ask again",
+  "Don't count on it 😬","My reply is no","Very doubtful...","Outlook not so good 💀"
+];
+function askBall(){
+  const q = document.getElementById('ball-question').value.trim();
+  if(!q){ document.getElementById('ball-answer').textContent='⚠️ Ask a question first!!'; return; }
+  const ball = document.getElementById('eightball');
+  const inner = document.getElementById('eightball-inner');
+  const answer = document.getElementById('ball-answer');
+  ball.classList.add('shaking');
+  inner.textContent='...';
+  answer.textContent='';
+  setTimeout(()=>{
+    ball.classList.remove('shaking');
+    const response = ballResponses[Math.floor(Math.random()*ballResponses.length)];
+    inner.innerHTML = response.substring(0,18)+'...';
+    answer.textContent = response;
+  },1400);
+}
+</script>
 </body>
 </html>
