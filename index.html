@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madison Personals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fdf8ee;
+      --ink: #1a1008;
+      --rose: #c94040;
+      --blush: #f2d5c8;
+      --gold: #b8860b;
+      --muted: #7a6e62;
+      --border: #d4c9b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ── */
+    .masthead {
+      border-bottom: 3px double var(--ink);
+      padding: 40px 48px 28px;
+      text-align: center;
+      position: relative;
+      background: var(--cream);
+    }
+    .masthead-rule {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .masthead-rule::before,
+    .masthead-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    h1.site-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(52px, 10vw, 96px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .hearts-banner {
+      font-size: 13px;
+      letter-spacing: 0.25em;
+      margin-top: 14px;
+      color: var(--rose);
+    }
+    .tagline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 14px 48px;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+    nav a:hover { color: var(--rose); }
+
+    /* ── MAIN LAYOUT ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .divider {
+      text-align: center;
+      padding: 32px 0;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--rose);
+    }
+
+    /* ── LISTING CARD ── */
+    .listing {
+      border-top: 2px solid var(--ink);
+      padding: 56px 0 0;
+      margin-bottom: 0;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .listing.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .listing-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 32px;
+    }
+
+    .ad-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .listing-headline {
+      font-family: 'Courier Prime', monospace;
+      font-weight: 700;
+      font-size: clamp(14px, 2.5vw, 20px);
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      max-width: 480px;
+    }
+
+    .listing-contact-top {
+      text-align: right;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── PHOTO + BODY GRID ── */
+    .listing-body {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .listing-body { grid-template-columns: 1fr; }
+      .listing-header { grid-template-columns: 1fr; }
+      .listing-contact-top { text-align: left; }
+    }
+
+    .listing-photo-wrap {
+      position: sticky;
+      top: 24px;
+    }
+
+    .listing-photo {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border: 1px solid var(--border);
+      filter: sepia(8%) contrast(1.02);
+    }
+
+    .photo-caption {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 6px;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── COPY ── */
+    .listing-copy {
+      padding-bottom: 56px;
+    }
+
+    .person-name {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-weight: 700;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .person-vitals {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .copy-body {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .copy-label {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    /* ── REVIEW BLOCK ── */
+    .review-block {
+      border-left: 2px solid var(--rose);
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: var(--blush);
+    }
+    .review-block p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #3a2018;
+    }
+    .review-byline {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* ── INTENTIONS BOX ── */
+    .intentions-box {
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      margin-top: 20px;
+      background: white;
+    }
+    .intentions-box p {
+      font-size: 15.5px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .intentions-box p:last-child { margin-bottom: 0; }
+
+    /* ── WANTS TO KNOW ── */
+    .wants-to-know {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 14px 0;
+      border-top: 1px dotted var(--border);
+      border-bottom: 1px dotted var(--border);
+      margin: 20px 0;
+    }
+    .wants-to-know .label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--rose);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+    .wants-to-know .question {
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    /* ── CONTACT FOOTER ── */
+    .contact-strip {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 14px 20px;
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      align-items: center;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+    }
+    .contact-strip a {
+      color: #f0d080;
+      text-decoration: none;
+    }
+    .contact-strip a:hover { text-decoration: underline; }
+    .contact-strip .contact-label {
+      color: #a09070;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 3px double var(--ink);
+      margin-top: 64px;
+      padding: 40px 48px;
+      text-align: center;
+    }
+    footer p {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 2;
+    }
+    footer .cta {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    /* ── PAGE FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .masthead, nav {
+      animation: fadeUp 0.7s ease both;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-rule">Est. Madison, WI — Love Seekers Edition</div>
+    <h1 class="site-title">Madison Personals</h1>
+    <div class="hearts-banner">♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥</div>
+    <p class="tagline">Real humans, honestly described, actively seeking you.</p>
+  </header>
+
+  <nav>
+    <a href="#listings">Love Seekers</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <main id="listings" class="page-wrap">
+
+    <!-- ── FINNLEY ── -->
+    <article class="listing" id="finn">
+      <div class="listing-header">
+        <div>
+          <div class="ad-label">Personal Ad № 001</div>
+          <div class="listing-headline">Alien Seeking Someone to Bite</div>
+        </div>
+        <div class="listing-contact-top">
+          Subject: "date Finn"<br>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform" target="_blank" style="color: var(--rose); font-family: 'Courier Prime', monospace; font-size: 11px; text-decoration: none;">→ Application Form</a>
+        </div>
+      </div>
+
+      <div class="listing-body">
+        <div class="listing-photo-wrap">
+          <img
+            src="https://lh3.googleusercontent.com/sitesv/APaQ0SSTIvKWfjaTRvjREeVWd7ojES2cphNJY4MKu-B4NoZmRwuBH-ckhXNMr4zoaSKatYXFP-WGDuMAK58QvOt5jWX3qfWfiBhs3roclmzzTqzx9a6eiRfYYeRnd-ltS3FJL-FL__jtaRM0XYyUf9JyDy158j_ltu2rqAxP-RFll68pXhjnwvOfeGIndA0MMX7OYDwEwdQstJFqr7yCJ6UBmA3czx9XgBmzsGlS=w1280"
+            alt="Finnley"
+            class="listing-photo"
+          >
+          <div class="photo-caption">FINNLEY · 24 · 5'9" · HISTORY TEACHER IN TRAINING</div>
+        </div>
+
+        <div class="listing-copy">
+          <div class="person-name">Finnley</div>
+          <div class="person-vitals">24 YRS · 5'9" · MADISON, WI</div>
+
+          <p class="copy-body">
+            A restless guy with 14 countries under his belt, he's hunkered down here for university to become a history teacher. Loves to be helpful, jacked, and a bit of a himbo. A terrible cook. Down to do things that are borderline illegal. Teaches English and throws lake moss at children as a summer camp counselor overseas, yet is prepared to fight bears to protect the kiddos.
+          </p>
+          <p class="copy-body">
+            Likes to host themed parties like: <em>lie to your friends, trade intangible services, goblin party,</em> and <em>gamble on oil wrestling.</em> His friends describe him as charming, passionate, eclectic, and a pure ball of energy. His enemies describe him as intense, impatient, and strange.
+          </p>
+
+          <div class="review-block">
+            <div class="review-byline">⭐⭐⭐⭐ Review from his ex, Krista</div>
+            <p>
+              He always shows up with multiple ideas of what to do, and there is rarely a lull in conversation. When there is, he immediately thinks up a question you would have never thought of. He will dance his heart out to fun music and is a master at dipping during swing dancing. Great at making people feel included and comfortable. <strong>Deducted one star:</strong> god-awful sleep schedule and a weird fixation on biting.
+            </p>
+          </div>
+
+          <div class="intentions-box">
+            <p><span class="copy-label">Intentions:</span> Looking for a deep connection, whether eternal or shorter than that. <em>"Chase me down, coward."</em></p>
+            <p><span class="copy-label">Seeking:</span> An intense and unconventional woman. Intelligent, creative, not easily embarrassed, and has a zeal for life. We love an evil, insane, powermaxing woman. Curious and energetic — appreciates his weirdness and has weirdness to offer. Can destroy him in boardgames, especially niche, mechanically convoluted ones (he deserves it). In need of a wallball partner.</p>
+          </div>
+
+          <div class="wants-to-know">
+            <span class="label">Wants to know →</span>
+            <span class="question">If you were a god in charge of a new planet you're making from scratch, what nonsense are you making?</span>
+          </div>
+
+          <div class="contact-strip">
+            <span class="contact-label">Contact:</span>
+            <span>Email with subject "date Finn" · Include your Instagram or a PowerPoint on why you should go out, plus your answer above.</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank">→ Fill Out the Form Instead</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider">♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥</div>
+
+    <!-- ── TY ── -->
+    <article class="listing" id="ty">
+      <div class="listing-header">
+        <div>
+          <div class="ad-label">Personal Ad № 002</div>
+          <div class="listing-headline">Big Dawg Seeking Tender Care and Affection</div>
+        </div>
+        <div class="listing-contact-top">
+          Subject: "date Ty"<br>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform" target="_blank" style="color: var(--rose); font-family: 'Courier Prime', monospace; font-size: 11px; text-decoration: none;">→ Application Form</a>
+        </div>
+      </div>
+
+      <div class="listing-body">
+        <div class="listing-photo-wrap">
+          <img
+            src="https://lh3.googleusercontent.com/sitesv/APaQ0SQx5Yr7zXduj_aOmIM55r7Nxx_GJc2rfB0EtoUtxvvN-TImvDb3NovM78X2U9t3nknKiq5u-KufJFjiOLHewQ6ErFsPYg3bdepODg46wl68nMCtUrOt6qdPRzZGlkDYWIi9hS_bS16ajjpKZTG5QkvRhc0AO5Tl0wnBqF16yTChksveDH5MmeZJ5I8mQQyjCY10iLRvjqXpIdPBNcpta2dqZEzn9elVo3QnZ6c=w1280"
+            alt="Ty"
+            class="listing-photo"
+          >
+          <div class="photo-caption">TY · 22 · 5'11" · SENIOR, BIOMEDICAL ENGINEERING</div>
+        </div>
+
+        <div class="listing-copy">
+          <div class="person-name">Ty</div>
+          <div class="person-vitals">22 YRS · 5'11" (NOT 6') · MADISON, WI</div>
+
+          <p class="copy-body">
+            A "work hard, play hard" kind of guy — though he works a lot harder than he plays and hopes to remedy this immediately. Honest as a policy, even to his own detriment (refer to height measurement which could, but does not, begin with 6). Lifts five days a week, tries to do so before daily 9ams — about 60% success rate. 50% success rate with funny jokes, which is pretty good for a man.
+          </p>
+          <p class="copy-body">
+            <span class="copy-label">Pros:</span> Very good cook + will offer to cook for you. Tons of hobbies. Emotionally mature, confident. Great freestyle dancer, mediocre ballroom dancer. Can bench you + will ask to bench you. Romantic — you'll have to race him to open doors for yourself. Need a date to a function, a gym buddy, or STEM tutoring? Here's your man. He HAS gone to therapy and is a sucker for someone emotionally intelligent.
+          </p>
+
+          <div class="review-block">
+            <div class="review-byline">Review from his friend Lana</div>
+            <p>
+              "Ty is a very genuine person. He's responsive and non-defensive in conversation. He's in the Top 3 of Men I Feel Safe Around™, the pool of contestants deadass being every man I've ever encountered. The first time I actually started getting to know him, he asked someone to show him how to shake ass and <em>went</em> for it. And, yes, it was good. This one does not froth at the mouth. He is, additionally, an A-grade Diva /pos. Highly recommend."
+            </p>
+          </div>
+
+          <div class="intentions-box">
+            <p><span class="copy-label">Intentions:</span> Expires 5/31 — get it while it's fresh!! (Graduating and moving to MN at the end of May.) Fun dates until he leaves. You need an extra body for a fun idea, or just someone to build a table with ya in exchange for a kiss? Here's your man.</p>
+            <p><span class="copy-label">Seeking:</span> Someone uninhibited and unafraid of being cringe. His physical type is "people I find attractive" — a fella with a broad spectrum whose love is not restrained by attributes and fantasies.</p>
+          </div>
+
+          <div class="wants-to-know">
+            <span class="label">Wants to know →</span>
+            <span class="question">How do you feel about biomedical engineering, and what's the most unethical thing you wish you could do with it?</span>
+          </div>
+
+          <div class="contact-strip">
+            <span class="contact-label">Contact:</span>
+            <span>Email with subject "date Ty" · Include your Instagram or a PowerPoint, plus your answer above.</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank">→ Fill Out the Form Instead</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider">♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥</div>
+
+    <!-- ── OLIVIA ── -->
+    <article class="listing" id="olivia">
+      <div class="listing-header">
+        <div>
+          <div class="ad-label">Personal Ad № 003</div>
+          <div class="listing-headline">Free Woman Seeking Companion(s) for Quests</div>
+        </div>
+        <div class="listing-contact-top">
+          Subject: "date (or befriend) Olivia"<br>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform" target="_blank" style="color: var(--rose); font-family: 'Courier Prime', monospace; font-size: 11px; text-decoration: none;">→ Application Form</a>
+        </div>
+      </div>
+
+      <div class="listing-body">
+        <div class="listing-photo-wrap">
+          <img
+            src="https://lh3.googleusercontent.com/sitesv/APaQ0STTQTvUUDV-GNdPzXDvhrchUBvkbCMI4V26WWDNCUdB7Jyx3nEC0EyiHDJjfw28xRNEwyV0oCv0b0shVn1rUV4FXxv6dr_wMC_qhcZRNq1fSrMntkaoa9XSNj1c9kb93CIe8th7fsX0Fd1aS1Ji9zfRMYXb_SnmOdQnvmTjKCdDiH3qlBwnRCNgKVjdGDZrauZmH5cXUu6bgOhwnsmG0cWKdXFKwwdWuwAslpE=w1280"
+            alt="Olivia"
+            class="listing-photo"
+          >
+          <div class="photo-caption">OLIVIA · 22 · 5'5" · APPRENTICE ELECTRICIAN</div>
+        </div>
+
+        <div class="listing-copy">
+          <div class="person-name">Olivia</div>
+          <div class="person-vitals">22 YRS · 5'5" · MADISON, WI</div>
+
+          <p class="copy-body">
+            This is an electric woman. She is apprenticing to be an electrician, so you know you'll have a spark with her. A morning riser who can still rally to go out dancing, she stays busy — and if you can get a spot in her schedule, she's always down to try new interests. As a free spirit, she wanders from new friend to new friend in any room.
+          </p>
+          <p class="copy-body">
+            Self-described as awkward, she lives her life more through actions than words. She is a calisthenics queen and is prepared for any athletic activity that may drop in her lap. Once persuaded everyone at a rock concert to stop glaring while she jumped around — and inadvertently included their neighbors in moshing.
+          </p>
+
+          <div class="intentions-box">
+            <p><span class="copy-label">Intentions:</span> Olivia is discovering her freedom after a 3-year relationship — currently in her hyper-independence era. Motto: <em>"If it's in the name of fun, let's do it."</em></p>
+            <p><span class="copy-label">Seeking:</span> She's allergic to date-dates but totally down for new friends. If it turns into a little more than friends, that's cool too — as long as ya don't try to lock her down!</p>
+          </div>
+
+          <div class="wants-to-know">
+            <span class="label">Wants to know →</span>
+            <span class="question">What's the wildest thing we could do together? (PG-13, perverts.)</span>
+          </div>
+
+          <div class="contact-strip">
+            <span class="contact-label">Contact:</span>
+            <span>Email with subject "date (or befriend) Olivia" · Include your Instagram or a PowerPoint, plus your answer above.</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank">→ Fill Out the Form Instead</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider">♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥</div>
+
+    <!-- ── CAITLIN ── -->
+    <article class="listing" id="caitlin">
+      <div class="listing-header">
+        <div>
+          <div class="ad-label">Personal Ad № 004</div>
+          <div class="listing-headline">Poetic Siren Seeking Artistic Companion(s)</div>
+        </div>
+        <div class="listing-contact-top">
+          Subject: "date Caitlin"<br>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform" target="_blank" style="color: var(--rose); font-family: 'Courier Prime', monospace; font-size: 11px; text-decoration: none;">→ Application Form</a>
+        </div>
+      </div>
+
+      <div class="listing-body">
+        <div class="listing-photo-wrap">
+          <img
+            src="https://lh3.googleusercontent.com/sitesv/APaQ0SQQA3duRBCYk2q7LSdJwKg5sHHY0s4NHXnA2YRrgbpWwwH39NqX1B9MTeYcqHrU3bgaA8q364nYo2s3SxXj5fDWEb0gl9vxDdH7UemZzZfua8R0CwGB1smp_IlIwPf_YdevwifEi1ifjjCQBw3dhUNUSH23cWFnScvWBbAc0YsvwR6guMoMURvyews=w1280"
+            alt="Caitlin"
+            class="listing-photo"
+          >
+          <div class="photo-caption">CAITLIN · 24 · 5'3" · ART THERAPIST-IN-TRAINING · BARTENDER</div>
+        </div>
+
+        <div class="listing-copy">
+          <div class="person-name">Caitlin</div>
+          <div class="person-vitals">24 YRS · 5'3" · MADISON, WI</div>
+
+          <p class="copy-body">
+            A versatile artist who will write a poem which will ignite a moment of clarity for you to recognize the humanity in the woman in front of you. If that doesn't get you — she paints, draws, sings, writes, and plays guitar. She will attempt to play any instrument in front of her, fair warning. You'll have access to a personal Amy Winehouse and Layne Staley impersonator who would lull you to sleep (her roommate attests to this) or yell you awake.
+          </p>
+          <p class="copy-body">
+            Can be found in the zone at raves, or blanket forts — she's a big chiller. A black cat, she can cleanse a space of icky energy and read your tarot. When it's warmer, she enjoys sitting on the back porch listening to the night and smoking. Plus, if you have serious internal emotional problems, she is in school to be an art therapist and currently a bartender — so she's covered on both ends.
+          </p>
+
+          <div class="review-block">
+            <div class="review-byline">Review from a friend (Finn)</div>
+            <p>
+              "She will either see right to your soul or give a good hug when needed. Keeps her apartment clean. Sleeps like concrete a lot but also stays awake until 4am. Has a cat named Peter. Vibey interior decorating taste."
+            </p>
+          </div>
+
+          <div class="intentions-box">
+            <p><span class="copy-label">Intentions:</span> She's playing an open field, no expectations! One might say she is open minded, as a true thinker should be.</p>
+            <p><span class="copy-label">Seeking:</span> Mr.s and Misses — Caitlin will have a date with anyone who comes with love in their heart and EDM beats on their minds. An independent missy, she likes to have her freedom. If you can stand with her while she lives her life, that'll get you brownie points and a kiss.</p>
+          </div>
+
+          <div class="wants-to-know">
+            <span class="label">Wants to know →</span>
+            <span class="question">How would you make Peter the Cat's life better?</span>
+          </div>
+
+          <div class="contact-strip">
+            <span class="contact-label">Contact:</span>
+            <span>Email with subject "date Caitlin" · Include your Instagram or a PowerPoint, plus your answer above.</span>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW8qpCti0uG37ptLpANs7uOcExAYNjy1hTLL3gXspEPjbr8w/viewform?usp=header" target="_blank">→ Fill Out the Form Instead</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="divider">♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥ ❤ ♥</div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="about">
+    <p class="cta">Want to be listed? Become one of our friends and pass the vibe check.</p>
+    <p>Madison Personals · Madison, WI · Love Seekers Edition</p>
+    <p style="margin-top:8px; font-style: italic; font-family: 'EB Garamond', serif; font-size: 14px; text-transform: none; letter-spacing: 0; color: #9a8e80;">A handmade classifieds for real humans deserving of good dates.</p>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in for listings
+    const listings = document.querySelectorAll('.listing');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08 });
+    listings.forEach(l => observer.observe(l));
+  </script>
+</body>
+</html>
