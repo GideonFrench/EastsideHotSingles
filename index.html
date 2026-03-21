@@ -7,10 +7,9 @@
   * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctext y='24' font-size='24'%3E%F0%9F%92%97%3C/text%3E%3C/svg%3E") 16 16, auto; }
 
   body {
-    background-color: #000080;
-    color: #ffff00;
+    color: #e8e8e8;
     font-family: "Comic Sans MS", "Trebuchet MS", Arial, sans-serif;
-    margin: 0; padding: 0; overflow-x: hidden;
+    overflow-x: hidden;
   }
 
   #starfield { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; overflow:hidden; }
@@ -23,49 +22,49 @@
   .sparkle { position:fixed; pointer-events:none; font-size:16px; animation:sparkle-fade 0.8s ease-out forwards; user-select:none; }
   @keyframes sparkle-fade { 0%{opacity:1;transform:translate(0,0) scale(1)} 100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(0.2)} }
 
-  .marquee-bar { background:#ff00ff; color:#ffff00; font-weight:bold; font-size:14px; padding:4px 0; border-top:3px solid #00ffff; border-bottom:3px solid #00ffff; }
+  .marquee-bar { background:#2d1b4e; color:#c8b8e8; font-weight:bold; font-size:14px; padding:4px 0; border-top:2px solid #6a4fa0; border-bottom:2px solid #6a4fa0; }
 
-  .main-table { width:1000px; margin:0 auto; background-color:#000066; border:4px ridge #ff00ff; }
+  .main-table { width:1000px; margin:0 auto; background-color:#1a1a2e; border:3px ridge #4a5580; }
 
-  .header-cell { background:linear-gradient(180deg,#660066,#000099,#660066); text-align:center; padding:16px 12px 8px; border-bottom:4px ridge #ff00ff; }
+  .header-cell { background:linear-gradient(180deg,#1b1b3a,#16213e,#1b1b3a); text-align:center; padding:16px 12px 8px; border-bottom:3px solid #4a5580; }
 
-  @keyframes rainbowCycle { 0%{color:#ff0000} 16%{color:#ff9900} 33%{color:#ffff00} 50%{color:#00ff00} 66%{color:#00ffff} 83%{color:#ff00ff} 100%{color:#ff0000} }
-  .site-title { font-family:"Impact","Arial Black",sans-serif; font-size:52px; text-shadow:3px 3px 0px #ffff00,5px 5px 0px #ff0000; letter-spacing:3px; display:block; margin-bottom:4px; animation:rainbowCycle 2s linear infinite; }
+  @keyframes rainbowCycle { 0%{color:#c47a8a} 25%{color:#e8a87c} 50%{color:#7ab892} 75%{color:#7eb8d4} 100%{color:#c47a8a} }
+  .site-title { font-family:"Impact","Arial Black",sans-serif; font-size:52px; text-shadow:2px 2px 0px #1b1b3a; letter-spacing:3px; display:block; margin-bottom:4px; animation:rainbowCycle 6s linear infinite; }
 
-  .subtitle { color:#00ffff; font-size:13px; font-weight:bold; letter-spacing:2px; }
-  .hearts-row { color:#ff69b4; font-size:20px; letter-spacing:4px; margin:6px 0; }
+  .subtitle { color:#7eb8d4; font-size:13px; font-weight:bold; letter-spacing:2px; }
+  .hearts-row { color:#c47a8a; font-size:20px; letter-spacing:4px; margin:6px 0; }
 
-  .navbar { background:#330033; text-align:center; padding:8px; border-bottom:3px solid #ff00ff; }
-  .navbar a { color:#00ffff; font-weight:bold; font-size:13px; text-decoration:none; margin:0 8px; padding:2px 8px; border:2px outset #00ffff; background:#000066; }
-  .navbar a:hover { background:#ff00ff; color:#000000; }
+  .navbar { background:#16213e; text-align:center; padding:8px; border-bottom:2px solid #4a5580; }
+  .navbar a { color:#a8b8d8; font-weight:bold; font-size:13px; text-decoration:none; margin:0 8px; padding:2px 8px; border:2px outset #4a5580; background:#1b1b3a; }
+  .navbar a:hover { background:#4a5580; color:#e8e8e8; }
 
-  .counter-strip { background:#000000; text-align:center; padding:6px; font-size:11px; color:#00ff00; font-family:"Courier New",monospace; border-bottom:1px solid #333; }
+  .counter-strip { background:#0d0d1a; text-align:center; padding:6px; font-size:11px; color:#7ab892; font-family:"Courier New",monospace; border-bottom:1px solid #2a2a4a; }
 
   .divider-row td { padding:10px 20px; text-align:center; }
-  .divider-hearts { color:#ff69b4; font-size:16px; letter-spacing:6px; }
+  .divider-hearts { color:#8a6fa0; font-size:16px; letter-spacing:6px; }
 
-  .listing-table { width:100%; border:3px ridge #ff00ff; background:#000044; }
-  .listing-header-cell { background:linear-gradient(90deg,#660000,#990066,#660000); padding:10px 16px; border-bottom:2px solid #ff00ff; }
-  .ad-number { font-family:"Courier New",monospace; font-size:10px; color:#aaaaaa; display:block; margin-bottom:2px; }
-  .listing-headline { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#ffff00; text-shadow:2px 2px 0 #ff0000; text-transform:uppercase; letter-spacing:1px; }
-  .listing-photo { width:200px; border:4px ridge #ff00ff; display:block; }
+  .listing-table { width:100%; border:2px solid #4a5580; background:#1c2541; }
+  .listing-header-cell { background:linear-gradient(90deg,#0f1e3d,#1b2a52,#0f1e3d); padding:10px 16px; border-bottom:1px solid #4a5580; }
+  .ad-number { font-family:"Courier New",monospace; font-size:10px; color:#6070a0; display:block; margin-bottom:2px; }
+  .listing-headline { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#d8c8f0; text-shadow:1px 1px 0 #0f1e3d; text-transform:uppercase; letter-spacing:1px; }
+  .listing-photo { width:200px; border:3px solid #4a5580; display:block; }
   .photo-table { float:left; margin:0 16px 8px 0; }
-  .photo-caption-cell { background:#330033; text-align:center; padding:4px; font-size:10px; color:#ff69b4; font-family:"Courier New",monospace; border-top:1px solid #ff00ff; }
-  .copy-cell { padding:12px 16px; color:#ffffff; font-size:14px; line-height:1.6; }
-  .person-name-h2 { font-family:"Impact","Arial Black",sans-serif; font-size:28px; color:#ff00ff; text-shadow:2px 2px 0 #000000; margin:0 0 2px 0; }
-  .vitals { font-family:"Courier New",monospace; font-size:12px; color:#00ffff; margin-bottom:10px; }
-  .copy-body { font-size:14px; color:#ffffff; margin-bottom:10px; line-height:1.75; }
-  .review-box { background:#1a0033; border:2px dashed #ff00ff; padding:10px 12px; margin:10px 0; font-size:13px; color:#ffddff; line-height:1.7; }
-  .review-byline { color:#ff69b4; font-size:11px; font-family:"Courier New",monospace; font-weight:bold; margin-bottom:6px; display:block; }
-  .intentions-box { background:#001a00; border:2px solid #00ff00; padding:10px 12px; margin:10px 0; font-size:14px; color:#eeffee; line-height:1.75; }
-  .wants-box { background:#330000; border-left:6px solid #ff0000; padding:8px 12px; margin:10px 0; font-size:14px; color:#ffeeee; font-style:italic; }
-  .wants-label { color:#ff0000; font-weight:bold; font-style:normal; font-size:11px; font-family:"Courier New",monospace; text-transform:uppercase; display:block; margin-bottom:4px; }
-  .contact-strip { background:#000000; border-top:2px solid #ff00ff; padding:8px 12px; font-size:12px; color:#cccccc; font-family:"Courier New",monospace; }
-  .contact-strip a { color:#ffff00; font-weight:bold; }
-  .apply-btn { display:inline-block; background:#ff00ff; color:#000000; font-weight:bold; font-size:12px; padding:4px 14px; border:3px outset #ff99ff; text-decoration:none; font-family:"Comic Sans MS",sans-serif; margin-top:6px; }
-  .apply-btn:hover { background:#ffff00; }
-  .about-box { background:#001133; border:2px ridge #00ffff; padding:14px; margin:10px 20px; font-size:13px; color:#ccddff; }
-  .footer-cell { background:#330033; text-align:center; padding:16px; border-top:4px ridge #ff00ff; font-size:12px; color:#ff69b4; }
+  .photo-caption-cell { background:#141d35; text-align:center; padding:4px; font-size:10px; color:#8a9ac0; font-family:"Courier New",monospace; border-top:1px solid #3a4570; }
+  .copy-cell { padding:12px 16px; color:#e8e8e8; font-size:14px; line-height:1.6; background:#1c2541; }
+  .person-name-h2 { font-family:"Impact","Arial Black",sans-serif; font-size:28px; color:#c8a8e8; text-shadow:1px 1px 0 #0a0a1a; margin:0 0 2px 0; }
+  .vitals { font-family:"Courier New",monospace; font-size:12px; color:#7eb8d4; margin-bottom:10px; }
+  .copy-body { font-size:14px; color:#d8d8e8; margin-bottom:10px; line-height:1.75; }
+  .review-box { background:#1a1535; border:2px dashed #6a4fa0; padding:10px 12px; margin:10px 0; font-size:13px; color:#c8b8e8; line-height:1.7; }
+  .review-byline { color:#a08ab8; font-size:11px; font-family:"Courier New",monospace; font-weight:bold; margin-bottom:6px; display:block; }
+  .intentions-box { background:#152a1e; border:2px solid #3a7a50; padding:10px 12px; margin:10px 0; font-size:14px; color:#a8d4b8; line-height:1.75; }
+  .wants-box { background:#2a1818; border-left:5px solid #8a4040; padding:8px 12px; margin:10px 0; font-size:14px; color:#d4a8a8; font-style:italic; }
+  .wants-label { color:#c47a8a; font-weight:bold; font-style:normal; font-size:11px; font-family:"Courier New",monospace; text-transform:uppercase; display:block; margin-bottom:4px; }
+  .contact-strip { background:#141d35; border-top:1px solid #3a4570; padding:8px 12px; font-size:12px; color:#8a9ac0; font-family:"Courier New",monospace; }
+  .contact-strip a { color:#7eb8d4; font-weight:bold; text-decoration:underline; }
+  .apply-btn { display:inline-block; background:#2d1b4e; color:#c8b8e8; font-weight:bold; font-size:12px; padding:4px 14px; border:2px outset #6a4fa0; text-decoration:none; font-family:"Comic Sans MS",sans-serif; margin-top:6px; }
+  .apply-btn:hover { background:#4a3570; color:#e8e8e8; }
+  .about-box { background:#141d35; border:2px ridge #3a4570; padding:14px; margin:10px 20px; font-size:13px; color:#a8b8d8; }
+  .footer-cell { background:#16213e; text-align:center; padding:16px; border-top:3px solid #4a5580; font-size:12px; color:#8a9ac0; }
 
   @keyframes blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
   .blink { animation:blink 1s infinite; }
@@ -82,10 +81,10 @@
   .rainbow span:nth-child(15){color:#ffff00} .rainbow span:nth-child(16){color:#00ff00}
 
 
-  .jump-menu { background:#000033; border:2px solid #00ffff; padding:10px 16px; text-align:center; }
-  .jump-menu a { color:#ff69b4; font-family:"Courier New",monospace; font-size:12px; text-decoration:none; margin:0 8px; font-weight:bold; }
-  .jump-menu a:hover { color:#ffff00; text-decoration:underline; }
-  .jump-label { color:#00ffff; font-family:"Courier New",monospace; font-size:11px; letter-spacing:0.1em; display:block; margin-bottom:6px; }
+  .jump-menu { background:#141d35; border:2px solid #3a4570; padding:10px 16px; text-align:center; }
+  .jump-menu a { color:#7eb8d4; font-family:"Courier New",monospace; font-size:12px; text-decoration:none; margin:0 8px; font-weight:bold; }
+  .jump-menu a:hover { color:#c8a8e8; text-decoration:underline; }
+  .jump-label { color:#6070a0; font-family:"Courier New",monospace; font-size:11px; letter-spacing:0.1em; display:block; margin-bottom:6px; }
   .review-outer { margin:12px 0; }
   .review-site-bar { background:#cccccc; border:2px outset #ffffff; padding:3px 8px; font-family:"Courier New",monospace; font-size:10px; color:#000000; display:flex; align-items:center; gap:6px; }
   .review-site-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
@@ -99,27 +98,273 @@
   .banner-row { padding:6px 20px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
   .live-dot { display:inline-block; width:8px; height:8px; background:#ff0000; border-radius:50%; animation:blink 1s infinite; margin-right:4px; vertical-align:middle; }
 
+
+  /* ═══ WINDOWS 98 IE WRAPPER ═══ */
+  html, body { margin:0; padding:0; background:#008080; min-height:100vh; }
+
+  #ie-window {
+    width: 1040px;
+    margin: 10px auto 40px;
+    box-shadow: 3px 3px 0 #000000, -1px -1px 0 #ffffff;
+    border: 2px solid #000000;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* Title bar */
+  #ie-titlebar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+  }
+  #ie-titlebar-left { display:flex; align-items:center; gap:4px; }
+  #ie-titlebar-icon { font-size:14px; }
+  .ie-winbtn {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    width: 16px; height: 14px;
+    font-size: 9px;
+    font-weight: bold;
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 2px;
+    font-family: "Arial", sans-serif;
+  }
+  .ie-winbtn:active { border: 2px inset #ffffff; }
+
+  /* Menu bar */
+  #ie-menubar {
+    background: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    padding: 2px 4px;
+    font-size: 12px;
+    color: #000000;
+    display: flex;
+    gap: 2px;
+  }
+  .ie-menu-item {
+    padding: 2px 8px;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+  }
+  .ie-menu-item:hover { background:#000080; color:#ffffff; }
+
+  /* Toolbar */
+  #ie-toolbar {
+    background: #c0c0c0;
+    border-bottom: 2px groove #808080;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .ie-toolbtn {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 2px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 32px;
+    gap: 1px;
+  }
+  .ie-toolbtn:hover { background: #d4d0c8; }
+  .ie-toolbtn:active { border: 2px inset #ffffff; }
+  .ie-toolbtn span { font-size: 9px; }
+  .ie-toolbar-sep { width:1px; height:30px; background:#808080; margin:0 4px; border-left:1px solid #ffffff; }
+  #ie-go-btn {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 2px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* Address bar */
+  #ie-addressbar {
+    background: #c0c0c0;
+    border-bottom: 2px groove #808080;
+    padding: 3px 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-family: "Arial", sans-serif;
+  }
+  #ie-address-label { color:#000000; font-size:12px; white-space:nowrap; }
+  #ie-address-input {
+    flex: 1;
+    border: 2px inset #808080;
+    background: #ffffff;
+    color: #000000;
+    font-size: 12px;
+    padding: 1px 4px;
+    font-family: "Arial", sans-serif;
+  }
+
+  /* Content area */
+  #ie-content {
+    background: #1a1a2e;
+    overflow-y: auto;
+    max-height: 82vh;
+  }
+
+  /* Status bar */
+  #ie-statusbar {
+    background: #c0c0c0;
+    border-top: 2px groove #ffffff;
+    padding: 2px 6px;
+    font-size: 11px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Arial", sans-serif;
+  }
+  #ie-status-left { display:flex; align-items:center; gap:8px; }
+  #ie-status-zone { border:2px inset #808080; padding:1px 8px; font-size:10px; }
+  #ie-progress-wrap { width:80px; height:8px; background:#808080; border:2px inset #808080; }
+  #ie-progress-bar { height:100%; background:#000080; width:100%; animation:ieLoad 3s ease-in-out infinite; }
+  @keyframes ieLoad { 0%{width:0%} 60%{width:100%} 100%{width:100%} }
+
+  /* Windows 98 Taskbar */
+  #win98-taskbar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 32px;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    gap: 4px;
+    z-index: 10000;
+    font-family: "Arial", sans-serif;
+    font-size: 11px;
+  }
+  #start-btn {
+    background: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 2px 8px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 24px;
+  }
+  #start-btn:active { border: 2px inset #ffffff; }
+  .taskbar-sep { width:1px; height:22px; background:#808080; border-left:1px solid #ffffff; margin:0 2px; }
+  .taskbar-item {
+    background: #c0c0c0;
+    border: 2px inset #ffffff;
+    padding: 2px 10px;
+    font-size: 11px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  #taskbar-clock {
+    margin-left: auto;
+    border: 2px inset #808080;
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  /* Override main-table to be full width inside ie-content */
+  .main-table { width: 100% !important; margin: 0 auto !important; border-left:none !important; border-right:none !important; }
+
   hr.fancy { border:none; border-top:2px dashed #ff00ff; margin:6px 0; }
   .cf::after { content:""; display:table; clear:both; }
 
   /* FUN BOXES */
-  .fun-box { background:#1a001a; border:3px ridge #ff00ff; padding:16px; margin:10px 20px; text-align:center; font-family:"Comic Sans MS",sans-serif; }
-  .fun-box h3 { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#ff00ff; text-shadow:2px 2px 0 #ff0000; margin:0 0 10px 0; }
-  .fun-input { background:#000033; border:2px inset #ff00ff; color:#ffff00; font-family:"Comic Sans MS",sans-serif; font-size:13px; padding:4px 8px; width:180px; }
-  .fun-btn { background:#ff00ff; color:#000000; font-weight:bold; font-size:13px; padding:4px 16px; border:3px outset #ff99ff; font-family:"Comic Sans MS",sans-serif; margin:8px auto 0; display:block; }
-  .fun-btn:hover { background:#ffff00; }
-  #love-result { margin-top:12px; font-size:15px; font-weight:bold; color:#ff69b4; min-height:24px; }
-  #love-bar-wrap { width:80%; margin:8px auto; background:#330033; border:2px solid #ff00ff; height:20px; display:none; }
-  #love-bar { height:100%; background:linear-gradient(90deg,#ff0000,#ff00ff,#ff69b4); width:0%; transition:width 1s ease; }
+  .fun-box { background:#16213e; border:2px solid #3a4570; padding:16px; text-align:center; font-family:"Comic Sans MS",sans-serif; }
+  .fun-box h3 { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#c8a8e8; text-shadow:1px 1px 0 #0a0a1a; margin:0 0 10px 0; }
+  .fun-input { background:#0d0d1a; border:2px inset #3a4570; color:#d8d8e8; font-family:"Comic Sans MS",sans-serif; font-size:13px; padding:4px 8px; width:180px; }
+  .fun-btn { background:#2d1b4e; color:#c8b8e8; font-weight:bold; font-size:13px; padding:4px 16px; border:2px outset #6a4fa0; font-family:"Comic Sans MS",sans-serif; margin:8px auto 0; display:block; }
+  .fun-btn:hover { background:#4a3570; color:#e8e8e8; }
+  #love-result { margin-top:12px; font-size:15px; font-weight:bold; color:#c8a8e8; min-height:24px; }
+  #love-bar-wrap { width:80%; margin:8px auto; background:#0d0d1a; border:1px solid #3a4570; height:16px; display:none; }
+  #love-bar { height:100%; background:linear-gradient(90deg,#3a5580,#6a4fa0,#7eb8d4); width:0%; transition:width 1s ease; }
 
   #eightball { width:120px; height:120px; background:radial-gradient(circle at 35% 35%,#444,#000); border-radius:50%; margin:12px auto; display:flex; align-items:center; justify-content:center; border:4px ridge #333; box-shadow:0 0 20px #ff00ff88; cursor:pointer; }
-  #eightball-inner { width:70px; height:70px; background:radial-gradient(circle at 40% 40%,#1a1aff,#000066); border-radius:50%; display:flex; align-items:center; justify-content:center; text-align:center; font-family:"Comic Sans MS",sans-serif; font-size:11px; color:#aaccff; font-weight:bold; padding:6px; line-height:1.3; transition:all 0.3s; }
-  #ball-answer { font-size:13px; color:#ff69b4; margin-top:8px; font-weight:bold; min-height:20px; }
+  #eightball-inner { width:70px; height:70px; background:radial-gradient(circle at 40% 40%,#3344ff,#000088); border-radius:50%; display:flex; align-items:center; justify-content:center; text-align:center; font-family:"Comic Sans MS",sans-serif; font-size:11px; color:#ccddff; font-weight:bold; padding:6px; line-height:1.3; transition:all 0.3s; }
+  #ball-answer { font-size:13px; color:#c8a8e8; margin-top:8px; font-weight:bold; min-height:20px; }
   @keyframes ballShake { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
   .shaking { animation:ballShake 0.4s ease 3; }
 </style>
 </head>
 <body>
+
+<div id="ie-window">
+
+  <!-- TITLE BAR -->
+  <div id="ie-titlebar">
+    <div id="ie-titlebar-left">
+      <span id="ie-titlebar-icon">&#127760;</span>
+      Eastside Roomies - Microsoft Internet Explorer
+    </div>
+    <div>
+      <span class="ie-winbtn">_</span>
+      <span class="ie-winbtn">&#9633;</span>
+      <span class="ie-winbtn" style="font-weight:bold;">&#10005;</span>
+    </div>
+  </div>
+
+  <!-- MENU BAR -->
+  <div id="ie-menubar">
+    <span class="ie-menu-item">File</span>
+    <span class="ie-menu-item">Edit</span>
+    <span class="ie-menu-item">View</span>
+    <span class="ie-menu-item">Favorites</span>
+    <span class="ie-menu-item">Tools</span>
+    <span class="ie-menu-item">Help</span>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div id="ie-toolbar">
+    <div class="ie-toolbtn" onclick="history.back()">&#9664;<br><span>Back</span></div>
+    <div class="ie-toolbtn" onclick="history.forward()">&#9654;<br><span>Forward</span></div>
+    <div class="ie-toolbtn" onclick="location.reload()">&#128472;<br><span>Stop</span></div>
+    <div class="ie-toolbtn" onclick="location.reload()">&#128260;<br><span>Refresh</span></div>
+    <div class="ie-toolbtn" onclick="window.scrollTo(0,0)">&#127968;<br><span>Home</span></div>
+    <div class="ie-toolbar-sep"></div>
+    <div class="ie-toolbtn">&#128269;<br><span>Search</span></div>
+    <div class="ie-toolbtn">&#11088;<br><span>Favorites</span></div>
+    <div class="ie-toolbtn">&#128196;<br><span>History</span></div>
+    <div class="ie-toolbar-sep"></div>
+    <div class="ie-toolbtn">&#9993;<br><span>Mail</span></div>
+    <div class="ie-toolbtn">&#128438;<br><span>Print</span></div>
+  </div>
+
+  <!-- ADDRESS BAR -->
+  <div id="ie-addressbar">
+    <span id="ie-address-label">Address</span>
+    <input id="ie-address-input" type="text" value="http://www.eastsideroomies.geocities.com/love-seekers/index.html" readonly>
+    <button id="ie-go-btn">Go</button>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div id="ie-content">
+
 
 <div id="starfield"></div>
 <div id="sparkle-container"></div>
@@ -171,34 +416,34 @@
 
   <!-- HOUSE INTRO -->
   <tr><td style="padding:10px 20px;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="border:3px ridge #00ffff; background:#000033;">
-      <tr><td style="background:linear-gradient(90deg,#003366,#000066,#003366); padding:10px 16px; border-bottom:2px solid #00ffff;">
-        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#00ffff; text-shadow:2px 2px 0 #0000ff; text-transform:uppercase; letter-spacing:1px;">&#127968; ABOUT THE HOUSE &#127968;</span>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:2px solid #3a4570; background:#141d35;">
+      <tr><td style="background:linear-gradient(90deg,#0f1e3d,#141d35,#0f1e3d); padding:10px 16px; border-bottom:1px solid #3a4570;">
+        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#7eb8d4; text-shadow:1px 1px 0 #0a0a1a; text-transform:uppercase; letter-spacing:1px;">&#127968; ABOUT THE HOUSE &#127968;</span>
       </td></tr>
-      <tr><td style="padding:14px 18px; color:#ffffcc; font-size:13px; line-height:1.7;">
-        <p>We live in an <font color="#ffff00"><b>awesome house</b></font> in Madison, WI. Seven humans. Two cats. Zero regrets.</p>
-        <p style="margin-top:10px;"><font color="#00ffff"><b>&#9658; PERKS OF DATING ONE OF US:</b></font></p>
+      <tr><td style="padding:14px 18px; color:#d8d8e8; font-size:13px; line-height:1.7;">
+        <p>We live in an <b style="color:#e8a87c;">awesome house</b> in Madison, WI. Seven humans. Two cats. Zero regrets.</p>
+        <p style="margin-top:10px;"><font color="#7eb8d4"><b>&#9658; PERKS OF DATING ONE OF US:</b></font></p>
         <table cellpadding="6" cellspacing="0" style="margin-top:8px; width:100%;">
           <tr>
             <td style="color:#ffccff; font-size:16px; width:24px;">&#127860;</td>
-            <td style="color:#ffffcc; font-size:13px;"><b>Free food</b> &mdash; we cook, you benefit</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Free food</b> &mdash; we cook, you benefit</td>
             <td style="color:#ffccff; font-size:16px; width:24px;">&#127908;</td>
-            <td style="color:#ffffcc; font-size:13px;"><b>Singing</b> &mdash; spontaneous, frequent, unapologetic</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Singing</b> &mdash; spontaneous, frequent, unapologetic</td>
           </tr>
           <tr>
-            <td style="color:#ffccff; font-size:16px;">&#129337;</td>
-            <td style="color:#ffffcc; font-size:13px;"><b>Acroyoga</b> &mdash; we will attempt to lift you</td>
-            <td style="color:#ffccff; font-size:16px;">&#127917;</td>
-            <td style="color:#ffffcc; font-size:13px;"><b>Improv</b> &mdash; yes, and...</td>
+            <td style="color:#8a7aa8; font-size:16px;">&#129337;</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Acroyoga</b> &mdash; we will attempt to lift you</td>
+            <td style="color:#8a7aa8; font-size:16px;">&#127917;</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Improv</b> &mdash; yes, and...</td>
           </tr>
           <tr>
-            <td style="color:#ffccff; font-size:16px;">&#127822;</td>
-            <td style="color:#ffffcc; font-size:13px;"><b>Homemade apple cider</b> &mdash; pressed from half a ton of actual apples</td>
-            <td style="color:#ffccff; font-size:16px;">&#128008;</td>
-            <td style="color:#ffffcc; font-size:13px;"><b>Two cats</b> &mdash; names available upon request</td>
+            <td style="color:#8a7aa8; font-size:16px;">&#127822;</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Homemade apple cider</b> &mdash; pressed from half a ton of actual apples</td>
+            <td style="color:#8a7aa8; font-size:16px;">&#128008;</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Two cats</b> &mdash; names available upon request</td>
           </tr>
           <tr>
-            <td style="color:#ffccff; font-size:16px;">&#129364;</td>
+            <td style="color:#8a7aa8; font-size:16px;">&#129364;</td>
             <td style="color:#ffffcc; font-size:13px;" colspan="3"><b>Fool's Church</b> &mdash; <font color="#ffccff"><i>witness Silas in full jester costume. it's a whole thing. attend if you dare.</i></font></td>
           </tr>
         </table>
@@ -211,9 +456,9 @@
 
   <!-- APPLY SECTION -->
   <tr id="apply"><td style="padding:10px 20px;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="border:3px ridge #ffff00; background:#1a1a00; text-align:center;">
-      <tr><td style="background:linear-gradient(90deg,#333300,#666600,#333300); padding:10px 16px; border-bottom:2px solid #ffff00;">
-        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:22px; color:#ffff00; text-shadow:2px 2px 0 #ff6600; text-transform:uppercase; letter-spacing:1px;">&#9829; SHOOT YOUR SHOT &#9829;</span>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:2px solid #4a5580; background:#16213e; text-align:center;">
+      <tr><td style="background:linear-gradient(90deg,#1b2a52,#16213e,#1b2a52); padding:10px 16px; border-bottom:1px solid #4a5580;">
+        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:22px; color:#c8a8e8; text-shadow:1px 1px 0 #0a0a1a; text-transform:uppercase; letter-spacing:1px;">&#9829; SHOOT YOUR SHOT &#9829;</span>
       </td></tr>
       <tr><td style="padding:18px; font-family:'Courier New',monospace;">
         <pre style="color:#00ff00; font-size:11px; line-height:1.4; display:inline-block; text-align:left; margin-bottom:14px;">
@@ -228,11 +473,11 @@
         <br>
         <font face="Comic Sans MS" size="2" color="#ffccff">
           Think you've got what it takes? Fill out the form.<br>
-          Include your <b><font color="#ffff00">Instagram</font></b> or a <b><font color="#ffff00">PowerPoint presentation</font></b> on why you deserve a date.<br>
+          Include your <b><font color="#7eb8d4">Instagram</font></b> or a <b><font color="#e8a87c">PowerPoint presentation</font></b> on why you deserve a date.<br>
           Don't forget to answer their question!!
         </font>
         <br><br>
-        <a href="https://forms.gle/s7jDvJvvwsNoaj3T8" target="_blank" style="display:inline-block; background:#ffff00; color:#000000; font-weight:bold; font-size:16px; padding:8px 28px; border:4px outset #ffff99; text-decoration:none; font-family:'Impact','Arial Black',sans-serif; letter-spacing:2px;">&#9829; APPLY NOW &#9829;</a>
+        <a href="https://forms.gle/s7jDvJvvwsNoaj3T8" target="_blank" style="display:inline-block; background:#2d1b4e; color:#c8b8e8; font-weight:bold; font-size:16px; padding:8px 28px; border:2px outset #6a4fa0; text-decoration:none; font-family:'Impact','Arial Black',sans-serif; letter-spacing:2px;">&#9829; APPLY NOW &#9829;</a>
       </td></tr>
     </table>
   </td></tr>
@@ -241,19 +486,19 @@
 
   <!-- GROUP PHOTO -->
   <tr><td style="padding:10px 20px;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="border:3px ridge #ff00ff; background:#000044; text-align:center;">
-      <tr><td style="background:linear-gradient(90deg,#660000,#990066,#660000); padding:10px 16px; border-bottom:2px solid #ff00ff;">
-        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#ffff00; text-shadow:2px 2px 0 #ff0000; text-transform:uppercase; letter-spacing:1px;"><span class="live-dot"></span> LIVE UPDATES FROM THE HOUSE</span>
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:2px solid #3a4570; background:#141d35; text-align:center;">
+      <tr><td style="background:linear-gradient(90deg,#0f1e3d,#1b2a52,#0f1e3d); padding:10px 16px; border-bottom:1px solid #4a5580;">
+        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#c8a8e8; text-shadow:1px 1px 0 #0a0a1a; text-transform:uppercase; letter-spacing:1px;"><span class="live-dot"></span> LIVE UPDATES FROM THE HOUSE</span>
       </td></tr>
       <tr><td style="padding:16px;">
-        <div style="font-family:'Courier New',monospace; font-size:11px; color:#00ff00; margin-bottom:10px; text-align:left; padding:6px 10px; background:#001100; border:1px solid #00ff00;">
+        <div style="font-family:'Courier New',monospace; font-size:11px; color:#7ab892; margin-bottom:10px; text-align:left; padding:6px 10px; background:#101e15; border:1px solid #3a7a50;">
           <span class="live-dot"></span> <b>LATEST DISPATCH</b> &mdash; <font color="#ffff00">March 2026</font>
         </div>
-        <img src="group.JPG" style="max-width:100%; border:4px ridge #ff00ff; display:block; margin:0 auto;" alt="Riding the forklift at the farm">
-        <div style="font-family:'Times New Roman',serif; font-size:14px; color:#ffffcc; margin-top:12px; line-height:1.75; text-align:left; padding:0 8px;">
-          We have been inventing new and dangerous ways to amuse ourselves without going to Disneyworld &mdash; such as <font color="#ffff00"><b>throwing frisbees over bonfires</b></font> and <font color="#ff69b4"><b>riding forklifts</b></font>. The house remains structurally sound. <i>Probably.</i>
+        <img src="forklift.JPG" style="max-width:100%; border:2px solid #3a4570; display:block; margin:0 auto;" alt="Riding the forklift at the farm">
+        <div style="font-family:'Times New Roman',serif; font-size:14px; color:#d8d8e8; margin-top:12px; line-height:1.75; text-align:left; padding:0 8px;">
+          We have been inventing new and dangerous ways to amuse ourselves without going to Disneyworld &mdash; such as <b style="color:#e8a87c;">throwing frisbees over bonfires</b> and <b style="color:#e8a87c;">riding forklifts</b>. The house remains structurally sound. <i>Probably.</i>
         </div>
-        <div style="font-family:'Courier New',monospace; font-size:10px; color:#ff69b4; margin-top:10px; border-top:1px dashed #ff00ff; padding-top:6px;">
+        <div style="font-family:'Courier New',monospace; font-size:10px; color:#6a5a80; margin-top:10px; border-top:1px dashed #3a4570; padding-top:6px;">
           THE EASTSIDE ROOMIES &bull; MADISON WI &bull; EST. 2025 &bull; <span class="blink">UPDATES ONGOING</span>
         </div>
       </td></tr>
@@ -272,13 +517,16 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="gideon.JPG" class="listing-photo" alt="Gideon"></td></tr>
-          <tr><td class="photo-caption-cell">GIDEON &bull; HE/HIM &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;</font></td></tr>
+          <tr><td class="photo-caption-cell">GIDEON &bull; HE/HIM &bull; 24 &bull; 5'9"</td></tr>
         </table>
         <h2 class="person-name-h2">Gideon</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in women" style="font-size:15px; letter-spacing:2px;">&#9792;</font></div>
-        <p class="copy-body">Gideon is a walking contradiction in the best possible way: <font color="#ffff00"><b>adventurous enough to find the nearest kombucha bar in any city on earth,</b></font> chaotic enough to fill it with knickknacks he definitely didn't need. A creative nerdy type who is somehow also athletic, outdoorsy, and will be at a concert, on a trail, in a kitchen, at a gallery, and on a dance floor <i>all in the same weekend.</i> He cooks, he hikes, he games, he reads &mdash; the man contains multitudes.</p>
-        <p class="copy-body">Fair warning: he will rant about urbanism <font color="#ff6666"><b>at least once a day,</b></font> and you will either find it fascinating or learn to find it fascinating. His friends describe him as <font color="#00ffff"><i>"surprisingly worldly &mdash; most likely to know where the nearest kombucha bar is."</i></font> His enemies have not been reached for comment.</p>
-        <p class="copy-body"><font color="#ff69b4"><b>Known quirks:</b></font> He sneezes when he gets full <font color="#aaaaaa">(yes, really)</font> &mdash; the most endearing and unhinged quality a person can have. Also a <b>collector of knickknacks</b> &mdash; strong opinions about shelf space? Proceed with caution.</p>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+      <div style="display:inline-block; background:#2a1530; border:2px solid #8a4060; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#c47a8a; letter-spacing:0.05em; letter-spacing:0.05em;">
+        INTERESTED IN: &#9792; Women
+      </div>
+        <p class="copy-body">Gideon is a walking contradiction in the best possible way: <b style="color:#e8a87c;">adventurous enough to find the nearest kombucha bar in any city on earth,</b> chaotic enough to fill it with knickknacks he definitely didn't need. A creative nerdy type who is somehow also athletic, outdoorsy, and will be at a concert, on a trail, in a kitchen, at a gallery, and on a dance floor <i>all in the same weekend.</i> He cooks, he hikes, he games, he reads &mdash; the man contains multitudes.</p>
+        <p class="copy-body">Fair warning: he will rant about urbanism <b style="color:#c47a8a;">at least once a day,</b> and you will either find it fascinating or learn to find it fascinating. His friends describe him as <i style="color:#7ab892;">"surprisingly worldly &mdash; most likely to know where the nearest kombucha bar is."</i> His enemies have not been reached for comment.</p>
+        <p class="copy-body"><b style="color:#e8a87c;">Known quirks:</b> He sneezes when he gets full <font color="#a8a8a8">(yes, really)</font> &mdash; the most endearing and unhinged quality a person can have. Also a <b>collector of knickknacks</b> &mdash; strong opinions about shelf space? Proceed with caution.</p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Looking for something real &mdash; a genuine connection with someone he can drag on spontaneous adventures and stay up too late talking to.<br><br>
           <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone funny, creative, and weird in a good way. Emotionally intelligent enough to call him out, ambitious enough to have their own thing going on. Doesn't need to share every hobby &mdash; just needs to have a pulse on <i>something</i> they love. Spontaneous a plus. Boring is a dealbreaker.
@@ -317,12 +565,15 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="silas.JPG" class="listing-photo" alt="Silas"></td></tr>
-          <tr><td class="photo-caption-cell">SILAS &bull; HE/HIM &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;</font></td></tr>
+          <tr><td class="photo-caption-cell">SILAS &bull; HE/HIM &bull; 24 &bull; 5'9"</td></tr>
         </table>
         <h2 class="person-name-h2">Silas</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in women" style="font-size:15px; letter-spacing:2px;">&#9792;</font></div>
-        <p class="copy-body">Silas is a man of <font color="#ffff00"><b>deceptively vast range.</b></font> By day, an animator and illustrator with a sketchbook never far from reach. By weekend, a <b>chainsaw operator who has felled actual trees</b> and driven a tractor. The man can go from pixel art to heavy machinery without blinking. He also maintains meticulous Excel spreadsheets tracking video game stats, which is either deeply nerdy or deeply impressive &mdash; probably both.</p>
-        <p class="copy-body">A <font color="#00ffff"><i>Minecraft minigame architect</i></font> of some renown among those who know him. Laid-back enough to make anyone feel at ease, funny enough to make you snort-laugh, creative enough to make you feel boring by comparison (in a good way). Low drama, high imagination.</p>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+      <div style="display:inline-block; background:#2a1530; border:2px solid #8a4060; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#c47a8a; letter-spacing:0.05em; letter-spacing:0.05em;">
+        INTERESTED IN: &#9792; Women
+      </div>
+        <p class="copy-body">Silas is a man of <b style="color:#e8a87c;">deceptively vast range.</b> By day, an animator and illustrator with a sketchbook never far from reach. By weekend, a <b>chainsaw operator who has felled actual trees</b> and driven a tractor. The man can go from pixel art to heavy machinery without blinking. He also maintains meticulous Excel spreadsheets tracking video game stats, which is either deeply nerdy or deeply impressive &mdash; probably both.</p>
+        <p class="copy-body">A <i style="color:#7ab892;">Minecraft minigame architect</i> of some renown among those who know him. Laid-back enough to make anyone feel at ease, funny enough to make you snort-laugh, creative enough to make you feel boring by comparison (in a good way). Low drama, high imagination.</p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Looking for a real relationship with someone who brings their own energy and isn't afraid to try things.<br><br>
           <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Chill vibes and genuine fun. Someone who appreciates both the silly and the sincere. Bonus points if you'll let him draw you.
@@ -361,12 +612,15 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="audrey.JPG" class="listing-photo" alt="Audrey"></td></tr>
-          <tr><td class="photo-caption-cell">AUDREY &bull; SHE/HER &bull; 23 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;&#9794;</font></td></tr>
+          <tr><td class="photo-caption-cell">AUDREY &bull; SHE/HER &bull; 23 &bull; 5'9"</td></tr>
         </table>
         <h2 class="person-name-h2">Audrey</h2>
-        <div class="vitals">&gt; AGE: 23 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in men &amp; women" style="font-size:15px; letter-spacing:2px;">&#9792;&#9794;</font></div>
-        <p class="copy-body">Audrey contains the energy of an entire forest and approximately six different hobbies happening simultaneously. She dances, reads, meditates, tie-dyes, <b>wrestles</b>, studies fungus, <font color="#ffff00"><b>builds cob houses</b></font>, makes tea, and climbs things. Not in that order. Sometimes all at once. She is what happens when you let someone follow every interest they've ever had with zero shame.</p>
-        <p class="copy-body">Warm enough to make you feel immediately at home, chaotic enough to suggest something completely unhinged five minutes later. Outdoorsy in the genuine sense &mdash; <font color="#00ffff"><i>not the "I own hiking boots" sense.</i></font> She has actually built a structure out of mud and straw and she's proud of it.</p>
+        <div class="vitals">&gt; AGE: 23 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+      <div style="display:inline-block; background:#1e1535; border:2px solid #6a4fa0; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#a888d8; letter-spacing:0.05em; letter-spacing:0.05em;">
+        INTERESTED IN: &#9792;&#9794; Women &amp; Men
+      </div>
+        <p class="copy-body">Audrey contains the energy of an entire forest and approximately six different hobbies happening simultaneously. She dances, reads, meditates, tie-dyes, <b>wrestles</b>, studies fungus, <b style="color:#e8a87c;">builds cob houses</b>, makes tea, and climbs things. Not in that order. Sometimes all at once. She is what happens when you let someone follow every interest they've ever had with zero shame.</p>
+        <p class="copy-body">Warm enough to make you feel immediately at home, chaotic enough to suggest something completely unhinged five minutes later. Outdoorsy in the genuine sense &mdash; <i style="color:#7ab892;">not the "I own hiking boots" sense.</i> She has actually built a structure out of mud and straw and she's proud of it.</p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Not looking to be locked down &mdash; looking to find her people. Friends first, see where it goes.<br><br>
           <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone curious about the world and not easily spooked. If you think studying fungus is cool (it is), you're already ahead.
@@ -405,12 +659,15 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="elinor.JPG" class="listing-photo" alt="Elinor"></td></tr>
-          <tr><td class="photo-caption-cell">ELINOR &bull; SHE/HER &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9794;</font></td></tr>
+          <tr><td class="photo-caption-cell">ELINOR &bull; SHE/HER &bull; 24 &bull; 5'9"</td></tr>
         </table>
         <h2 class="person-name-h2">Elinor</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; CLEARANCE LEVEL: CLASSIFIED &nbsp;<font color="#ff69b4" title="Interested in men" style="font-size:15px; letter-spacing:2px;">&#9794;</font></div>
-        <p class="copy-body">Elinor is a woman of <font color="#ffff00"><b>refined taste and questionable schemes.</b></font> She bakes mooncakes, bikes across the city, runs for sport, and maintains a <b>Furby collection</b> that she will defend with her life. A devoted Harry Styles appreciator and student of mischief, she approaches life like a low-stakes espionage thriller &mdash; always three steps ahead, always slightly mysterious about it.</p>
-        <p class="copy-body">Athletic enough to outpace you, witty enough to out-talk you, ambitious enough to have a five-year plan she won't fully disclose. Her cats are well-fed and better-dressed than most people. <font color="#00ffff"><i>She is looking for someone who can keep up &mdash; financially, intellectually, and aesthetically.</i></font></p>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; CLEARANCE LEVEL: CLASSIFIED</div>
+      <div style="display:inline-block; background:#151e35; border:2px solid #3a5580; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#7eb8d4; letter-spacing:0.05em; letter-spacing:0.05em;">
+        INTERESTED IN: &#9794; Men
+      </div>
+        <p class="copy-body">Elinor is a woman of <b style="color:#e8a87c;">refined taste and questionable schemes.</b> She bakes mooncakes, bikes across the city, runs for sport, and maintains a <b>Furby collection</b> that she will defend with her life. A devoted Harry Styles appreciator and student of mischief, she approaches life like a low-stakes espionage thriller &mdash; always three steps ahead, always slightly mysterious about it.</p>
+        <p class="copy-body">Athletic enough to outpace you, witty enough to out-talk you, ambitious enough to have a five-year plan she won't fully disclose. Her cats are well-fed and better-dressed than most people. <i style="color:#7ab892;">She is looking for someone who can keep up &mdash; financially, intellectually, and aesthetically.</i></p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Seeking a relationship with someone who matches her energy and exceeds her expectations.<br><br>
           <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Handsome, rich, and ambitious. Bonus points if you can tell a mooncake from a pastry and don't flinch at the Furbies.
@@ -449,12 +706,15 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="casey.jpg" class="listing-photo" alt="Casey"></td></tr>
-          <tr><td class="photo-caption-cell">CASEY &bull; SHE/HER &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9794;</font></td></tr>
+          <tr><td class="photo-caption-cell">CASEY &bull; SHE/HER &bull; 24 &bull; 5'9"</td></tr>
         </table>
         <h2 class="person-name-h2">Casey</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in men" style="font-size:15px; letter-spacing:2px;">&#9794;</font></div>
-        <p class="copy-body">Casey <font color="#ffff00"><b>sleeps suspended in the air</b></font> &mdash; as in, literally, in a hammock or aerial setup &mdash; and somehow this is the least surprising thing about her. She breaks into spontaneous dancing at random moments with zero warning and zero apology. She creates intricate mandala art, bikes everywhere, and can consume <b>large portions of vegan food</b> in a way that commands respect.</p>
-        <p class="copy-body">Warm enough to make strangers feel like old friends, witty enough to make you feel like you're always slightly missing the joke (in a fun way), and mysterious enough that you'll want to keep asking questions. <font color="#00ffff"><i>She moves through the world on her own frequency and it's a very good one.</i></font></p>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+      <div style="display:inline-block; background:#151e35; border:2px solid #3a5580; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#7eb8d4; letter-spacing:0.05em; letter-spacing:0.05em;">
+        INTERESTED IN: &#9794; Men
+      </div>
+        <p class="copy-body">Casey <b style="color:#e8a87c;">sleeps suspended in the air</b> &mdash; as in, literally, in a hammock or aerial setup &mdash; and somehow this is the least surprising thing about her. She breaks into spontaneous dancing at random moments with zero warning and zero apology. She creates intricate mandala art, bikes everywhere, and can consume <b>large portions of vegan food</b> in a way that commands respect.</p>
+        <p class="copy-body">Warm enough to make strangers feel like old friends, witty enough to make you feel like you're always slightly missing the joke (in a fun way), and mysterious enough that you'll want to keep asking questions. <i style="color:#7ab892;">She moves through the world on her own frequency and it's a very good one.</i></p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Not here for anything too serious &mdash; but never say never. Friends first, always.<br><br>
           <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone with their own thing going on. Doesn't need to match her vibe exactly &mdash; just needs to appreciate it. Dancers, artists, and fellow hammock enthusiasts welcome.
@@ -493,12 +753,15 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="nyigel.JPG" class="listing-photo" alt="Nyigel"></td></tr>
-          <tr><td class="photo-caption-cell">NYIGEL &bull; HE/HIM &bull; 26 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;</font></td></tr>
+          <tr><td class="photo-caption-cell">NYIGEL &bull; HE/HIM &bull; 26 &bull; 5'9"</td></tr>
         </table>
         <h2 class="person-name-h2">Nyigel</h2>
-        <div class="vitals">&gt; AGE: 26 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in women" style="font-size:15px; letter-spacing:2px;">&#9792;</font></div>
-        <p class="copy-body">Nyigel is a man who has <font color="#ffff00"><b>genuinely studied alchemy</b></font> and will tell you about it at length if you let him, which you should. A deep lover of European history, horror movies, and XCOM &mdash; the kind of guy who can explain the fall of the Byzantine Empire and then pivot seamlessly into a detailed breakdown of why that last mission went wrong. His <b>neighborhood bar knowledge</b> is encyclopedic and immediately useful.</p>
-        <p class="copy-body">Laid-back in the best possible way &mdash; no drama, no urgency, just good company and <font color="#00ffff"><i>the munchies at exactly the right moment.</i></font> Funny without trying too hard, witty without being exhausting. The kind of person who makes a Tuesday feel like an event.</p>
+        <div class="vitals">&gt; AGE: 26 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+      <div style="display:inline-block; background:#2a1530; border:2px solid #8a4060; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#c47a8a; letter-spacing:0.05em; letter-spacing:0.05em;">
+        INTERESTED IN: &#9792; Women
+      </div>
+        <p class="copy-body">Nyigel is a man who has <b style="color:#e8a87c;">genuinely studied alchemy</b> and will tell you about it at length if you let him, which you should. A deep lover of European history, horror movies, and XCOM &mdash; the kind of guy who can explain the fall of the Byzantine Empire and then pivot seamlessly into a detailed breakdown of why that last mission went wrong. His <b>neighborhood bar knowledge</b> is encyclopedic and immediately useful.</p>
+        <p class="copy-body">Laid-back in the best possible way &mdash; no drama, no urgency, just good company and <i style="color:#7ab892;">the munchies at exactly the right moment.</i> Funny without trying too hard, witty without being exhausting. The kind of person who makes a Tuesday feel like an event.</p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Looking for a genuine relationship with someone who appreciates the slow burn and a good horror movie on a Friday night.<br><br>
           <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone curious, low-key, and not afraid of a little darkness (cinematic or otherwise). Must be willing to debate historical counterfactuals at the bar.
@@ -574,13 +837,13 @@
   <!-- FOOTER -->
   <tr><td class="footer-cell">
     
-      <pre style="color:#ff69b4; font-size:10px; line-height:1.3; display:inline-block; margin-bottom:8px;">
+      <pre style="color:#6a5a80; font-size:10px; line-height:1.3; display:inline-block; margin-bottom:8px;">
   .  *    .        *       .    *   .       *    .
 *    .  EASTSIDE ROOMIES . MADISON WI . EST 2025   *
   .   *    .      *    .       *    .      *    .
       </pre>
       <br>
-      <div class="rainbow" style="font-family:Impact,Arial Black;font-size:24px;letter-spacing:2px;">
+      <div style="font-family:Impact,Arial Black;font-size:24px;letter-spacing:2px;color:#8a9ac0;">
       <span>E</span><span>A</span><span>S</span><span>T</span><span>S</span><span>I</span><span>D</span><span>E</span>&nbsp;<span>R</span><span>O</span><span>O</span><span>M</span><span>I</span><span>E</span><span>S</span><span>!</span>
     </div><br><br><br>
   </td></tr>
@@ -679,5 +942,32 @@ function askBall(){
   },1400);
 }
 </script>
+
+  </div><!-- end ie-content -->
+
+  <!-- STATUS BAR -->
+  <div id="ie-statusbar">
+    <div id="ie-status-left">
+      <span id="ie-status-text">&#10003; Done</span>
+      <div id="ie-progress-wrap"><div id="ie-progress-bar"></div></div>
+    </div>
+    <div id="ie-status-zone">Internet</div>
+  </div>
+
+</div><!-- end ie-window -->
+
+<!-- WINDOWS 98 TASKBAR -->
+<div id="win98-taskbar">
+  <div id="start-btn">
+    <span>&#127882;</span> <b>Start</b>
+  </div>
+  <div class="taskbar-sep"></div>
+  <div class="taskbar-item">&#127760; Eastside Roomies - Internet Explorer</div>
+  <div class="taskbar-item">&#128190; My Documents</div>
+  <div class="taskbar-item">&#128247; Paint</div>
+  <div id="taskbar-clock">12:00 PM</div>
+</div>
+
+
 </body>
 </html>
