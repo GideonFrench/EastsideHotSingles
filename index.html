@@ -53,12 +53,12 @@
   .photo-caption-cell { background:#330033; text-align:center; padding:4px; font-size:10px; color:#ff69b4; font-family:"Courier New",monospace; border-top:1px solid #ff00ff; }
   .copy-cell { padding:12px 16px; color:#ffffff; font-size:14px; line-height:1.6; }
   .person-name-h2 { font-family:"Impact","Arial Black",sans-serif; font-size:28px; color:#ff00ff; text-shadow:2px 2px 0 #000000; margin:0 0 2px 0; }
-  .vitals { font-family:"Courier New",monospace; font-size:11px; color:#00ffff; margin-bottom:10px; }
-  .copy-body { font-size:13px; color:#ffffcc; margin-bottom:10px; line-height:1.65; }
-  .review-box { background:#1a0033; border:2px dashed #ff00ff; padding:10px 12px; margin:10px 0; font-size:12px; color:#ffccff; line-height:1.6; }
+  .vitals { font-family:"Courier New",monospace; font-size:12px; color:#00ffff; margin-bottom:10px; }
+  .copy-body { font-size:14px; color:#ffffff; margin-bottom:10px; line-height:1.75; }
+  .review-box { background:#1a0033; border:2px dashed #ff00ff; padding:10px 12px; margin:10px 0; font-size:13px; color:#ffddff; line-height:1.7; }
   .review-byline { color:#ff69b4; font-size:11px; font-family:"Courier New",monospace; font-weight:bold; margin-bottom:6px; display:block; }
-  .intentions-box { background:#001a00; border:2px solid #00ff00; padding:10px 12px; margin:10px 0; font-size:13px; color:#ccffcc; line-height:1.65; }
-  .wants-box { background:#330000; border-left:6px solid #ff0000; padding:8px 12px; margin:10px 0; font-size:13px; color:#ffcccc; font-style:italic; }
+  .intentions-box { background:#001a00; border:2px solid #00ff00; padding:10px 12px; margin:10px 0; font-size:14px; color:#eeffee; line-height:1.75; }
+  .wants-box { background:#330000; border-left:6px solid #ff0000; padding:8px 12px; margin:10px 0; font-size:14px; color:#ffeeee; font-style:italic; }
   .wants-label { color:#ff0000; font-weight:bold; font-style:normal; font-size:11px; font-family:"Courier New",monospace; text-transform:uppercase; display:block; margin-bottom:4px; }
   .contact-strip { background:#000000; border-top:2px solid #ff00ff; padding:8px 12px; font-size:12px; color:#cccccc; font-family:"Courier New",monospace; }
   .contact-strip a { color:#ffff00; font-weight:bold; }
@@ -80,6 +80,24 @@
   .rainbow span:nth-child(11){color:#0000ff} .rainbow span:nth-child(12){color:#ff00ff}
   .rainbow span:nth-child(13){color:#ff0000} .rainbow span:nth-child(14){color:#ff7700}
   .rainbow span:nth-child(15){color:#ffff00} .rainbow span:nth-child(16){color:#00ff00}
+
+
+  .jump-menu { background:#000033; border:2px solid #00ffff; padding:10px 16px; text-align:center; }
+  .jump-menu a { color:#ff69b4; font-family:"Courier New",monospace; font-size:12px; text-decoration:none; margin:0 8px; font-weight:bold; }
+  .jump-menu a:hover { color:#ffff00; text-decoration:underline; }
+  .jump-label { color:#00ffff; font-family:"Courier New",monospace; font-size:11px; letter-spacing:0.1em; display:block; margin-bottom:6px; }
+  .review-outer { margin:12px 0; }
+  .review-site-bar { background:#cccccc; border:2px outset #ffffff; padding:3px 8px; font-family:"Courier New",monospace; font-size:10px; color:#000000; display:flex; align-items:center; gap:6px; }
+  .review-site-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+  .review-site-url { color:#0000cc; text-decoration:underline; font-size:10px; }
+  .review-site-body { background:#ffffff; border:2px inset #999999; border-top:none; padding:10px 12px; color:#000000; font-family:"Times New Roman",serif; font-size:12px; line-height:1.6; }
+  .review-site-title { font-size:13px; font-weight:bold; color:#cc0000; margin-bottom:4px; }
+  .review-stars { color:#ff9900; font-size:14px; letter-spacing:2px; }
+  .review-author { font-size:10px; color:#666666; font-style:italic; margin-top:6px; border-top:1px solid #cccccc; padding-top:4px; }
+  .banner-ad { border:2px outset #cccccc; text-align:center; font-family:"Comic Sans MS",sans-serif; font-weight:bold; cursor:pointer; display:block; text-decoration:none; animation:adPulse 2s ease-in-out infinite; }
+  @keyframes adPulse { 0%,100%{opacity:1} 50%{opacity:0.85} }
+  .banner-row { padding:6px 20px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .live-dot { display:inline-block; width:8px; height:8px; background:#ff0000; border-radius:50%; animation:blink 1s infinite; margin-right:4px; vertical-align:middle; }
 
   hr.fancy { border:none; border-top:2px dashed #ff00ff; margin:6px 0; }
   .cf::after { content:""; display:table; clear:both; }
@@ -112,6 +130,7 @@
   </marquee>
 </div>
 
+
 <table class="main-table" cellpadding="0" cellspacing="0">
 
   <tr>
@@ -126,8 +145,6 @@
   <tr>
     <td class="navbar">
       <a href="#listings">[ CANDIDATES ]</a>
-      <a href="#lovecalc">[ LOVE CALC ]</a>
-      <a href="#magic8">[ MAGIC 8-BALL ]</a>
       <a href="#apply">[ APPLY ]</a>
     </td>
   </tr>
@@ -137,6 +154,20 @@
       MADISON, WI &nbsp;|&nbsp; SCHENK-ATWOOD &nbsp;|&nbsp; EARTH
     </td>
   </tr>
+
+
+  <!-- JUMP MENU -->
+  <tr><td style="padding:6px 20px 0;">
+    <div class="jump-menu">
+      <span class="jump-label">&#9658; JUMP TO A CANDIDATE &#9660;</span>
+      <a href="#gideon">[ GIDEON ]</a>
+      <a href="#silas">[ SILAS ]</a>
+      <a href="#audrey">[ AUDREY ]</a>
+      <a href="#elinor">[ ELINOR ]</a>
+      <a href="#casey">[ CASEY ]</a>
+      <a href="#nyigel">[ NYIGEL ]</a>
+    </div>
+  </td></tr>
 
   <!-- HOUSE INTRO -->
   <tr><td style="padding:10px 20px;">
@@ -168,7 +199,7 @@
           </tr>
           <tr>
             <td style="color:#ffccff; font-size:16px;">&#129364;</td>
-            <td style="color:#ffffcc; font-size:13px;" colspan="3"><b>Fool</b></td>
+            <td style="color:#ffffcc; font-size:13px;" colspan="3"><b>Fool's Church</b> &mdash; <font color="#ffccff"><i>witness Silas in full jester costume. it's a whole thing. attend if you dare.</i></font></td>
           </tr>
         </table>
       </td></tr>
@@ -212,11 +243,19 @@
   <tr><td style="padding:10px 20px;">
     <table width="100%" cellpadding="0" cellspacing="0" style="border:3px ridge #ff00ff; background:#000044; text-align:center;">
       <tr><td style="background:linear-gradient(90deg,#660000,#990066,#660000); padding:10px 16px; border-bottom:2px solid #ff00ff;">
-        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#ffff00; text-shadow:2px 2px 0 #ff0000; text-transform:uppercase; letter-spacing:1px;">&#128247; THE CREW &#128247;</span>
+        <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#ffff00; text-shadow:2px 2px 0 #ff0000; text-transform:uppercase; letter-spacing:1px;"><span class="live-dot"></span> LIVE UPDATES FROM THE HOUSE</span>
       </td></tr>
       <tr><td style="padding:16px;">
-        <img src="group.JPG" style="max-width:100%; border:4px ridge #ff00ff; display:block; margin:0 auto;" alt="The whole crew">
-        <div style="font-family:'Courier New',monospace; font-size:10px; color:#ff69b4; margin-top:6px;">THE EASTSIDE ROOMIES &bull; MADISON WI &bull; EST. 2025</div>
+        <div style="font-family:'Courier New',monospace; font-size:11px; color:#00ff00; margin-bottom:10px; text-align:left; padding:6px 10px; background:#001100; border:1px solid #00ff00;">
+          <span class="live-dot"></span> <b>LATEST DISPATCH</b> &mdash; <font color="#ffff00">March 2026</font>
+        </div>
+        <img src="group.JPG" style="max-width:100%; border:4px ridge #ff00ff; display:block; margin:0 auto;" alt="Riding the forklift at the farm">
+        <div style="font-family:'Times New Roman',serif; font-size:14px; color:#ffffcc; margin-top:12px; line-height:1.75; text-align:left; padding:0 8px;">
+          We have been inventing new and dangerous ways to amuse ourselves without going to Disneyworld &mdash; such as <font color="#ffff00"><b>throwing frisbees over bonfires</b></font> and <font color="#ff69b4"><b>riding forklifts</b></font>. The house remains structurally sound. <i>Probably.</i>
+        </div>
+        <div style="font-family:'Courier New',monospace; font-size:10px; color:#ff69b4; margin-top:10px; border-top:1px dashed #ff00ff; padding-top:6px;">
+          THE EASTSIDE ROOMIES &bull; MADISON WI &bull; EST. 2025 &bull; <span class="blink">UPDATES ONGOING</span>
+        </div>
       </td></tr>
     </table>
   </td></tr>
@@ -233,10 +272,10 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="gideon.JPG" class="listing-photo" alt="Gideon"></td></tr>
-          <tr><td class="photo-caption-cell">GIDEON &bull; HE/HIM &bull; 24 &bull; 5'9"</td></tr>
+          <tr><td class="photo-caption-cell">GIDEON &bull; HE/HIM &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;</font></td></tr>
         </table>
         <h2 class="person-name-h2">Gideon</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in women" style="font-size:15px; letter-spacing:2px;">&#9792;</font></div>
         <p class="copy-body">Gideon is a walking contradiction in the best possible way: <font color="#ffff00"><b>adventurous enough to find the nearest kombucha bar in any city on earth,</b></font> chaotic enough to fill it with knickknacks he definitely didn't need. A creative nerdy type who is somehow also athletic, outdoorsy, and will be at a concert, on a trail, in a kitchen, at a gallery, and on a dance floor <i>all in the same weekend.</i> He cooks, he hikes, he games, he reads &mdash; the man contains multitudes.</p>
         <p class="copy-body">Fair warning: he will rant about urbanism <font color="#ff6666"><b>at least once a day,</b></font> and you will either find it fascinating or learn to find it fascinating. His friends describe him as <font color="#00ffff"><i>"surprisingly worldly &mdash; most likely to know where the nearest kombucha bar is."</i></font> His enemies have not been reached for comment.</p>
         <p class="copy-body"><font color="#ff69b4"><b>Known quirks:</b></font> He sneezes when he gets full <font color="#aaaaaa">(yes, really)</font> &mdash; the most endearing and unhinged quality a person can have. Also a <b>collector of knickknacks</b> &mdash; strong opinions about shelf space? Proceed with caution.</p>
@@ -248,6 +287,20 @@
           <span class="wants-label">&#9658; GIDEON WANTS TO KNOW:</span>
           A wizard gives you one animal's ability but you also have to take on one of its worst traits. What do you pick?
         </div>
+      <div class="review-outer">
+        <div class="review-site-bar">
+          <span class="review-site-dot" style="background:#ff4444;"></span>
+          <span class="review-site-dot" style="background:#ffaa00;"></span>
+          <span class="review-site-dot" style="background:#44cc44;"></span>
+          &nbsp;<span class="review-site-url">datemate98.geocities.com/reviews/madison</span>
+        </div>
+        <div class="review-site-body">
+          <div class="review-site-title">DateMate&#8482; User Reviews &rsaquo; Gideon H. &mdash; Madison WI</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="margin-top:6px;">Took me to a kombucha bar I did not know existed in my own neighborhood. Then went on a 20-minute urbanism rant that was, somehow, compelling. His knickknack shelf is a legitimate conversation piece. Sneezed after dinner. When I asked why, he explained. I respect the honesty.</div>
+          <div class="review-author">&mdash; anonymous user &bull; verified date &bull; March 2026</div>
+        </div>
+      </div>
       </td></tr>
     </table>
   </td></tr>
@@ -264,10 +317,10 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="silas.JPG" class="listing-photo" alt="Silas"></td></tr>
-          <tr><td class="photo-caption-cell">SILAS &bull; HE/HIM &bull; 24 &bull; 5'9"</td></tr>
+          <tr><td class="photo-caption-cell">SILAS &bull; HE/HIM &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;</font></td></tr>
         </table>
         <h2 class="person-name-h2">Silas</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in women" style="font-size:15px; letter-spacing:2px;">&#9792;</font></div>
         <p class="copy-body">Silas is a man of <font color="#ffff00"><b>deceptively vast range.</b></font> By day, an animator and illustrator with a sketchbook never far from reach. By weekend, a <b>chainsaw operator who has felled actual trees</b> and driven a tractor. The man can go from pixel art to heavy machinery without blinking. He also maintains meticulous Excel spreadsheets tracking video game stats, which is either deeply nerdy or deeply impressive &mdash; probably both.</p>
         <p class="copy-body">A <font color="#00ffff"><i>Minecraft minigame architect</i></font> of some renown among those who know him. Laid-back enough to make anyone feel at ease, funny enough to make you snort-laugh, creative enough to make you feel boring by comparison (in a good way). Low drama, high imagination.</p>
         <div class="intentions-box">
@@ -278,6 +331,20 @@
           <span class="wants-label">&#9658; SILAS WANTS TO KNOW:</span>
           What type of cloud would you be?
         </div>
+      <div class="review-outer">
+        <div class="review-site-bar">
+          <span class="review-site-dot" style="background:#ff4444;"></span>
+          <span class="review-site-dot" style="background:#ffaa00;"></span>
+          <span class="review-site-dot" style="background:#44cc44;"></span>
+          &nbsp;<span class="review-site-url">yelpfordating.net/madison/silas</span>
+        </div>
+        <div class="review-site-body">
+          <div class="review-site-title">YelpForDating.net &rsaquo; Silas &mdash; Animator &amp; Chainsaw Operator</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="margin-top:6px;">Asked me what kind of cloud I would be before we even sat down. I said cumulonimbus. He drew it on a napkin on the spot. I still have the napkin. He also mentioned that he has felled trees with a chainsaw. I did not expect to find this attractive. And yet.</div>
+          <div class="review-author">&mdash; cloudgirl99 &bull; verified &bull; Feb 2026</div>
+        </div>
+      </div>
       </td></tr>
     </table>
   </td></tr>
@@ -294,10 +361,10 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="audrey.JPG" class="listing-photo" alt="Audrey"></td></tr>
-          <tr><td class="photo-caption-cell">AUDREY &bull; SHE/HER &bull; 23 &bull; 5'9"</td></tr>
+          <tr><td class="photo-caption-cell">AUDREY &bull; SHE/HER &bull; 23 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;&#9794;</font></td></tr>
         </table>
         <h2 class="person-name-h2">Audrey</h2>
-        <div class="vitals">&gt; AGE: 23 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+        <div class="vitals">&gt; AGE: 23 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in men &amp; women" style="font-size:15px; letter-spacing:2px;">&#9792;&#9794;</font></div>
         <p class="copy-body">Audrey contains the energy of an entire forest and approximately six different hobbies happening simultaneously. She dances, reads, meditates, tie-dyes, <b>wrestles</b>, studies fungus, <font color="#ffff00"><b>builds cob houses</b></font>, makes tea, and climbs things. Not in that order. Sometimes all at once. She is what happens when you let someone follow every interest they've ever had with zero shame.</p>
         <p class="copy-body">Warm enough to make you feel immediately at home, chaotic enough to suggest something completely unhinged five minutes later. Outdoorsy in the genuine sense &mdash; <font color="#00ffff"><i>not the "I own hiking boots" sense.</i></font> She has actually built a structure out of mud and straw and she's proud of it.</p>
         <div class="intentions-box">
@@ -308,6 +375,20 @@
           <span class="wants-label">&#9658; AUDREY WANTS TO KNOW:</span>
           You find a door in the woods. It wasn't there yesterday. What do you do?
         </div>
+      <div class="review-outer">
+        <div class="review-site-bar">
+          <span class="review-site-dot" style="background:#ff4444;"></span>
+          <span class="review-site-dot" style="background:#ffaa00;"></span>
+          <span class="review-site-dot" style="background:#44cc44;"></span>
+          &nbsp;<span class="review-site-url">earthwives.org/reviews/madison/audrey</span>
+        </div>
+        <div class="review-site-body">
+          <div class="review-site-title">EarthWives Community Forum &rsaquo; Audrey &mdash; 5 stars, no notes</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="margin-top:6px;">Identified three species of fungus on our walk without looking them up. Then wrestled me (consensually). Then made tea from scratch. Then asked me what I would do if I found a door in the woods. I am not the same person I was. She opened the door. I went through it.</div>
+          <div class="review-author">&mdash; fernlover &bull; 1 contribution &bull; life-changing</div>
+        </div>
+      </div>
       </td></tr>
     </table>
   </td></tr>
@@ -324,10 +405,10 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="elinor.JPG" class="listing-photo" alt="Elinor"></td></tr>
-          <tr><td class="photo-caption-cell">ELINOR &bull; SHE/HER &bull; 24 &bull; 5'9"</td></tr>
+          <tr><td class="photo-caption-cell">ELINOR &bull; SHE/HER &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9794;</font></td></tr>
         </table>
         <h2 class="person-name-h2">Elinor</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; CLEARANCE LEVEL: CLASSIFIED</div>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; CLEARANCE LEVEL: CLASSIFIED &nbsp;<font color="#ff69b4" title="Interested in men" style="font-size:15px; letter-spacing:2px;">&#9794;</font></div>
         <p class="copy-body">Elinor is a woman of <font color="#ffff00"><b>refined taste and questionable schemes.</b></font> She bakes mooncakes, bikes across the city, runs for sport, and maintains a <b>Furby collection</b> that she will defend with her life. A devoted Harry Styles appreciator and student of mischief, she approaches life like a low-stakes espionage thriller &mdash; always three steps ahead, always slightly mysterious about it.</p>
         <p class="copy-body">Athletic enough to outpace you, witty enough to out-talk you, ambitious enough to have a five-year plan she won't fully disclose. Her cats are well-fed and better-dressed than most people. <font color="#00ffff"><i>She is looking for someone who can keep up &mdash; financially, intellectually, and aesthetically.</i></font></p>
         <div class="intentions-box">
@@ -338,6 +419,20 @@
           <span class="wants-label">&#9658; ELINOR WANTS TO KNOW:</span>
           You've just been recruited for a heist. What's your role and what's your cut?
         </div>
+      <div class="review-outer">
+        <div class="review-site-bar">
+          <span class="review-site-dot" style="background:#ff4444;"></span>
+          <span class="review-site-dot" style="background:#ffaa00;"></span>
+          <span class="review-site-dot" style="background:#44cc44;"></span>
+          &nbsp;<span class="review-site-url">handsomemenreview.biz/applicants-wanted</span>
+        </div>
+        <div class="review-site-body">
+          <div class="review-site-title">HandsomeMenReview.biz &rsaquo; SEEKING: Handsome, Rich &amp; Ambitious</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          <div style="margin-top:6px;">I am not the subject of this review. She is. Elinor arrived knowing exactly what she wanted and apologized for none of it. Brought mooncakes. Referenced two espionage operations unprompted. One of her Furbies activated mid-dinner. She did not flinch. Four stars only because her match has not yet applied. Gentlemen: the bar is set.</div>
+          <div class="review-author">&mdash; house roommate &bull; eyewitness account &bull; ongoing</div>
+        </div>
+      </div>
       </td></tr>
     </table>
   </td></tr>
@@ -354,10 +449,10 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="casey.jpg" class="listing-photo" alt="Casey"></td></tr>
-          <tr><td class="photo-caption-cell">CASEY &bull; SHE/HER &bull; 24 &bull; 5'9"</td></tr>
+          <tr><td class="photo-caption-cell">CASEY &bull; SHE/HER &bull; 24 &bull; 5'9" &bull; <font color="#ff69b4">&#9794;</font></td></tr>
         </table>
         <h2 class="person-name-h2">Casey</h2>
-        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+        <div class="vitals">&gt; AGE: 24 &nbsp;&gt; SHE/HER &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in men" style="font-size:15px; letter-spacing:2px;">&#9794;</font></div>
         <p class="copy-body">Casey <font color="#ffff00"><b>sleeps suspended in the air</b></font> &mdash; as in, literally, in a hammock or aerial setup &mdash; and somehow this is the least surprising thing about her. She breaks into spontaneous dancing at random moments with zero warning and zero apology. She creates intricate mandala art, bikes everywhere, and can consume <b>large portions of vegan food</b> in a way that commands respect.</p>
         <p class="copy-body">Warm enough to make strangers feel like old friends, witty enough to make you feel like you're always slightly missing the joke (in a fun way), and mysterious enough that you'll want to keep asking questions. <font color="#00ffff"><i>She moves through the world on her own frequency and it's a very good one.</i></font></p>
         <div class="intentions-box">
@@ -368,6 +463,20 @@
           <span class="wants-label">&#9658; CASEY WANTS TO KNOW:</span>
           If your life had a background soundtrack right now, what would it be and why?
         </div>
+      <div class="review-outer">
+        <div class="review-site-bar">
+          <span class="review-site-dot" style="background:#ff4444;"></span>
+          <span class="review-site-dot" style="background:#ffaa00;"></span>
+          <span class="review-site-dot" style="background:#44cc44;"></span>
+          &nbsp;<span class="review-site-url">hammocklife.com/profiles/casey-madison</span>
+        </div>
+        <div class="review-site-body">
+          <div class="review-site-title">HammockLife&#8482; Magazine Online &rsaquo; Casey &mdash; Suspended Dreamer, SHE/HER</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="margin-top:6px;">Started dancing at the farmers market with zero warning. Not for attention &mdash; just because the music was right. Made a mandala while waiting for food. Ate an enormous vegan meal with complete serenity. I felt calmer just being nearby. Background soundtrack: lo-fi beats and one surprised street musician.</div>
+          <div class="review-author">&mdash; farmersmarketguy &bull; unexpected encounter &bull; 2026</div>
+        </div>
+      </div>
       </td></tr>
     </table>
   </td></tr>
@@ -384,10 +493,10 @@
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
           <tr><td><img src="nyigel.JPG" class="listing-photo" alt="Nyigel"></td></tr>
-          <tr><td class="photo-caption-cell">NYIGEL &bull; HE/HIM &bull; 26 &bull; 5'9"</td></tr>
+          <tr><td class="photo-caption-cell">NYIGEL &bull; HE/HIM &bull; 26 &bull; 5'9" &bull; <font color="#ff69b4">&#9792;</font></td></tr>
         </table>
         <h2 class="person-name-h2">Nyigel</h2>
-        <div class="vitals">&gt; AGE: 26 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI</div>
+        <div class="vitals">&gt; AGE: 26 &nbsp;&gt; HE/HIM &nbsp;&gt; HEIGHT: 5'9" &nbsp;&gt; LOCATION: MADISON WI &nbsp;<font color="#ff69b4" title="Interested in women" style="font-size:15px; letter-spacing:2px;">&#9792;</font></div>
         <p class="copy-body">Nyigel is a man who has <font color="#ffff00"><b>genuinely studied alchemy</b></font> and will tell you about it at length if you let him, which you should. A deep lover of European history, horror movies, and XCOM &mdash; the kind of guy who can explain the fall of the Byzantine Empire and then pivot seamlessly into a detailed breakdown of why that last mission went wrong. His <b>neighborhood bar knowledge</b> is encyclopedic and immediately useful.</p>
         <p class="copy-body">Laid-back in the best possible way &mdash; no drama, no urgency, just good company and <font color="#00ffff"><i>the munchies at exactly the right moment.</i></font> Funny without trying too hard, witty without being exhausting. The kind of person who makes a Tuesday feel like an event.</p>
         <div class="intentions-box">
@@ -398,43 +507,64 @@
           <span class="wants-label">&#9658; NYIGEL WANTS TO KNOW:</span>
           You're the last two people on earth. We've got a bar, a record player, and one horror movie left. What's on the record and what are we watching?
         </div>
+      <div class="review-outer">
+        <div class="review-site-bar">
+          <span class="review-site-dot" style="background:#ff4444;"></span>
+          <span class="review-site-dot" style="background:#ffaa00;"></span>
+          <span class="review-site-dot" style="background:#44cc44;"></span>
+          &nbsp;<span class="review-site-url">nightowlmadison.com/regulars/nyigel</span>
+        </div>
+        <div class="review-site-body">
+          <div class="review-site-title">NightOwl Madison Bar Guide &rsaquo; Nyigel &mdash; Neighborhood Alchemist</div>
+          <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div style="margin-top:6px;">Knew every bartender by name at four different bars. Explained the fall of Constantinople between rounds two and three. Horror movie pick was impeccable. Produced snacks at exactly the right moment as if by magic (alchemy?). The kind of person who makes a Tuesday feel like a story you will tell for years.</div>
+          <div class="review-author">&mdash; barfly_anon &bull; Tuesday night &bull; recurring</div>
+        </div>
+      </div>
       </td></tr>
     </table>
   </td></tr>
 
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
-  <!-- LOVE CALCULATOR -->
-  <tr id="lovecalc"><td style="padding:10px 20px;">
-    <div class="fun-box">
-      <h3>&#128149; LOVE COMPATIBILITY CALCULATOR &#128149;</h3>
-      <font face="Comic Sans MS" size="2" color="#ffccff">Are you destined for one of our candidates? FIND OUT NOW!!</font>
-      <br><br>
-      <label style="color:#ffff00;font-size:13px;">Your Name:</label><br>
-      <input type="text" id="name1" class="fun-input" placeholder="Your name..."><br><br>
-      <label style="color:#ffff00;font-size:13px;">Their Name:</label><br>
-      <input type="text" id="name2" class="fun-input" placeholder="e.g. Gideon, Silas, Audrey...">
-      <br>
-      <button class="fun-btn" onclick="calcLove()">&#10084; CALCULATE LOVE &#10084;</button>
-      <div id="love-bar-wrap"><div id="love-bar"></div></div>
-      <div id="love-result"></div>
-    </div>
-  </td></tr>
+  <!-- LOVE CALC + MAGIC 8 SIDE BY SIDE -->
+  <tr><td style="padding:10px 20px;">
+    <table width="100%" cellpadding="0" cellspacing="8" style="border-collapse:separate;">
+      <tr valign="top">
 
-  <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
+        <!-- LOVE CALC -->
+        <td width="50%">
+          <div class="fun-box" style="height:100%;">
+            <h3>&#128149; LOVE CALCULATOR &#128149;</h3>
+            <font face="Comic Sans MS" size="2" color="#ffccff">Are you destined for one of us?</font>
+            <br><br>
+            <label style="color:#ffff00;font-size:13px;">Your Name:</label><br>
+            <input type="text" id="name1" class="fun-input" placeholder="Your name..." style="width:90%;"><br><br>
+            <label style="color:#ffff00;font-size:13px;">Their Name:</label><br>
+            <input type="text" id="name2" class="fun-input" placeholder="e.g. Gideon, Silas..." style="width:90%;">
+            <br>
+            <button class="fun-btn" onclick="calcLove()">&#10084; CALCULATE &#10084;</button>
+            <div id="love-bar-wrap" style="width:90%;"><div id="love-bar"></div></div>
+            <div id="love-result"></div>
+          </div>
+        </td>
 
-  <!-- MAGIC 8-BALL -->
-  <tr id="magic8"><td style="padding:10px 20px;">
-    <div class="fun-box">
-      <h3>&#9899; MAGIC 8-BALL &#9899;</h3>
-      <font face="Comic Sans MS" size="2" color="#ffccff">Should you apply? Ask the ball. It knows.</font><br>
-      <input type="text" id="ball-question" class="fun-input" placeholder="Ask your question..." style="width:280px;margin-top:10px;"><br>
-      <div id="eightball" onclick="askBall()">
-        <div id="eightball-inner">&#9650;<br>8</div>
-      </div>
-      <font size="2" color="#aaaaaa">(click the ball)</font>
-      <div id="ball-answer"></div>
-    </div>
+        <!-- MAGIC 8 BALL -->
+        <td width="50%">
+          <div class="fun-box" style="height:100%;">
+            <h3>&#9899; MAGIC 8-BALL &#9899;</h3>
+            <font face="Comic Sans MS" size="2" color="#ffccff">Should you apply? Ask the ball.</font><br>
+            <input type="text" id="ball-question" class="fun-input" placeholder="Ask your question..." style="width:90%;margin-top:10px;"><br>
+            <div id="eightball" onclick="askBall()">
+              <div id="eightball-inner">&#9650;<br>8</div>
+            </div>
+            <font size="2" color="#aaaaaa">(click the ball)</font>
+            <div id="ball-answer"></div>
+          </div>
+        </td>
+
+      </tr>
+    </table>
   </td></tr>
 
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
