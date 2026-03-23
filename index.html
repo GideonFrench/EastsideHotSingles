@@ -47,7 +47,7 @@
   .listing-header-cell { background:linear-gradient(90deg,#0f1e3d,#1b2a52,#0f1e3d); padding:10px 16px; border-bottom:1px solid #4a5580; }
   .ad-number { font-family:"Courier New",monospace; font-size:10px; color:#6070a0; display:block; margin-bottom:2px; }
   .listing-headline { font-family:"Impact","Arial Black",sans-serif; font-size:22px; color:#d8c8f0; text-shadow:1px 1px 0 #0f1e3d; text-transform:uppercase; letter-spacing:1px; }
-  .listing-photo { width:200px; border:3px solid #4a5580; display:block; }
+  .listing-photo { width:200px; height:200px; border:3px solid #4a5580; display:block; object-fit:cover; }
   .photo-table { float:left; margin:0 16px 8px 0; }
   .photo-caption-cell { background:#141d35; text-align:center; padding:4px; font-size:10px; color:#8a9ac0; font-family:"Courier New",monospace; border-top:1px solid #3a4570; }
   .copy-cell { padding:12px 16px; color:#e8e8e8; font-size:14px; line-height:1.6; background:#1c2541; }
@@ -239,8 +239,8 @@
   #ie-status-left { display:flex; align-items:center; gap:8px; }
   #ie-status-zone { border:2px inset #808080; padding:1px 8px; font-size:10px; }
   #ie-progress-wrap { width:80px; height:8px; background:#808080; border:2px inset #808080; }
-  #ie-progress-bar { height:100%; background:#000080; width:100%; animation:ieLoad 3s ease-in-out infinite; }
-  @keyframes ieLoad { 0%{width:0%} 60%{width:100%} 100%{width:100%} }
+  #ie-progress-bar { height:100%; background:#000080; width:0%; animation:ieLoad 2.5s ease-in-out forwards; }
+  @keyframes ieLoad { 0%{width:0%} 80%{width:100%} 100%{width:100%} }
 
   /* Windows 98 Taskbar */
   #win98-taskbar {
@@ -288,11 +288,22 @@
     padding: 2px 8px;
     font-size: 11px;
   }
+  .smenu-item {
+    padding: 6px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .smenu-item:hover { background: #000080; color: #ffffff; }
 
   /* Override main-table to be full width inside ie-content */
   .main-table { width: 100% !important; margin: 0 auto !important; border-left:none !important; border-right:none !important; }
 
-  hr.fancy { border:none; border-top:2px dashed #ff00ff; margin:6px 0; }
+  /* CSS Marquee replacement */
+  .marquee-wrap { overflow:hidden; white-space:nowrap; }
+  .marquee-track { display:inline-block; animation: marquee-left 28s linear infinite; }
+  .marquee-track-right { display:inline-block; animation: marquee-right 36s linear infinite; }
+  @keyframes marquee-left { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  @keyframes marquee-right { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
   .cf::after { content:""; display:table; clear:both; }
 
   /* FUN BOXES */
@@ -343,7 +354,7 @@
   <div id="ie-toolbar">
     <div class="ie-toolbtn" onclick="history.back()">&#9664;<br><span>Back</span></div>
     <div class="ie-toolbtn" onclick="history.forward()">&#9654;<br><span>Forward</span></div>
-    <div class="ie-toolbtn" onclick="location.reload()">&#128472;<br><span>Stop</span></div>
+    <div class="ie-toolbtn" onclick="window.stop()">&#128472;<br><span>Stop</span></div>
     <div class="ie-toolbtn" onclick="location.reload()">&#128260;<br><span>Refresh</span></div>
     <div class="ie-toolbtn" onclick="window.scrollTo(0,0)">&#127968;<br><span>Home</span></div>
     <div class="ie-toolbar-sep"></div>
@@ -370,9 +381,11 @@
 <div id="sparkle-container"></div>
 
 <div class="marquee-bar">
-  <marquee scrollamount="4">
-    &hearts; WELCOME TO EASTSIDE ROOMIES &hearts; TOP RANKED HOUSE FOR HOTNESS, SOME SAY &hearts; VETTED BY SIX OTHERS &hearts; WE HAVE STANDARDS &hearts; ITS NOT YOU, ITS ME &hearts;
-  </marquee>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      &hearts; WELCOME TO EASTSIDE ROOMIES &hearts; TOP RANKED HOUSE FOR HOTNESS, SOME SAY &hearts; VETTED BY SIX OTHERS &hearts; WE HAVE STANDARDS &hearts; ITS NOT YOU, ITS ME &hearts;&nbsp;&nbsp;&nbsp;&nbsp;&hearts; WELCOME TO EASTSIDE ROOMIES &hearts; TOP RANKED HOUSE FOR HOTNESS, SOME SAY &hearts; VETTED BY SIX OTHERS &hearts; WE HAVE STANDARDS &hearts; ITS NOT YOU, ITS ME &hearts;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+  </div>
 </div>
 
 
@@ -389,8 +402,10 @@
 
   <tr>
     <td class="navbar">
-      <a href="#listings">[ CANDIDATES ]</a>
+      <a href="#about">[ ABOUT ]</a>
       <a href="#apply">[ APPLY ]</a>
+      <a href="#listings">[ CANDIDATES ]</a>
+      <a href="#funstuff">[ FUN STUFF ]</a>
     </td>
   </tr>
 
@@ -402,7 +417,7 @@
 
 
   <!-- JUMP MENU -->
-  <tr><td style="padding:6px 20px 0;">
+  <tr id="listings"><td style="padding:6px 20px 0;">
     <div class="jump-menu">
       <span class="jump-label">&#9658; JUMP TO A CANDIDATE &#9660;</span>
       <a href="#gideon">[ GIDEON ]</a>
@@ -416,7 +431,7 @@
 
   <!-- HOUSE INTRO -->
   <!-- https://www.vertex42.com/ExcelTips/unicode-symbols.html for emojis, https://www.w3schools.com/charsets/ref_utf_punctuation.asp for symbols-->
-  <tr><td style="padding:10px 20px;">
+  <tr id="about"><td style="padding:10px 20px;">
     <table width="100%" cellpadding="0" cellspacing="0" style="border:2px solid #3a4570; background:#141d35;">
       <tr><td style="background:linear-gradient(90deg,#0f1e3d,#141d35,#0f1e3d); padding:10px 16px; border-bottom:1px solid #3a4570;">
         <span style="font-family:'Impact','Arial Black',sans-serif; font-size:20px; color:#7eb8d4; text-shadow:1px 1px 0 #0a0a1a; text-transform:uppercase; letter-spacing:1px;">&#127968; ABOUT THE HOUSE &#127968;</span>
@@ -433,7 +448,7 @@
           </tr>
           <tr>
             <td style="color:#8a7aa8; font-size:16px;">&#129337;</td>
-            <td style="color:#d4cce8; font-size:13px;"><b>Acroyoga</b> &#8227; we wil lift you</td>
+            <td style="color:#d4cce8; font-size:13px;"><b>Acroyoga</b> &#8227; we will lift you</td>
             <td style="color:#8a7aa8; font-size:16px;">&#127917;</td>
             <td style="color:#d4cce8; font-size:13px;"><b>Improv</b> &#8227; hope you know how to do a british accent</td>
           </tr>
@@ -515,7 +530,7 @@
     <table class="listing-table" cellpadding="0" cellspacing="0" id="gideon">
       <tr><td class="listing-header-cell">
         <span class="ad-number">PERSONAL AD &numero; 001</span>
-        <span class="listing-headline">&#128056; AMPHIBEAN SEEKS PRINCESS OR APPLICABLE ROYALTY TO AID IN BIPEDAL TRANSFORMATION &#128139;</span>
+        <span class="listing-headline">&#128056; AMPHIBIAN SEEKS PRINCESS OR APPLICABLE ROYALTY TO AID IN BIPEDAL TRANSFORMATION &#128139;</span>
       </td></tr>
       <tr><td class="copy-cell cf">
         <table class="photo-table" cellpadding="0" cellspacing="0">
@@ -526,12 +541,12 @@
       <div style="display:inline-block; background:#2a1530; border:2px solid #8a4060; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#c47a8a; letter-spacing:0.05em; letter-spacing:0.05em;">
         INTERESTED IN: &#9792; Women
       </div>
-        <p class="copy-body">Gideon. Where do you even start. He likes to watercolor paint and to screenprint shirts (as soon as a makerspace that rhymes with "Lodgery" lets him in). He is a photographer but only digital and is a little self conscious he hasn't been in a darkroom yet (poser!). He is a lover of music, especially Brazilian MPB, Detroit Techno and Chicago House, Turkish Psychadelia, Smooth Jazz, Jungle, Indie Folk, and Trip Hop, varying by the month.</p>
+        <p class="copy-body">Gideon. Where do you even start. He likes to watercolor paint and to screenprint shirts (as soon as a makerspace that rhymes with "Lodgery" lets him in). He is a photographer but only digital and is a little self conscious he hasn't been in a darkroom yet (poser!). He is a lover of music, especially Brazilian MPB, Detroit Techno and Chicago House, Turkish Psychedelia, Smooth Jazz, Jungle, Indie Folk, and Trip Hop, varying by the month.</p>
         <p class="copy-body">He will rant about urbanism <b style="color:#c47a8a;">at least once a day (legally),</b> and you will learn to find it fascinating. His friends describe him as <i style="color:#7ab892;">"surprisingly worldly"</i> and <i style="color:#7ab892;">"most likely to know where the nearest kombucha bar is."</i> He has no current enemies for comment but is aiming for a villain arc in 2028. He bikes around town with grocery bags on his handlebars to tempt fate to strike him down for his sins.</p>
-        <p class="copy-body"><b style="color:#e8a87c;">Known quirks:</b> He sneezes when he gets full. Also a <b>collector of knickknacks</b>, so those with strong opinions about windowsill space should proceed with caution. Cooks amazing vegetarian food: pizza, pasta, tamales, echiladas, falafels, dumplings... come with an empty stomach.</p>
+        <p class="copy-body"><b style="color:#e8a87c;">Known quirks:</b> He sneezes when he gets full. Also a <b>collector of knickknacks</b>, so those with strong opinions about windowsill space should proceed with caution. Cooks amazing vegetarian food: pizza, pasta, tamales, enchiladas, falafels, dumplings... come with an empty stomach.</p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Looking for someone who like spontaneous adventures, silly conversations, fun (or weird) movies, and good cuddling<br><br>
-          <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone funny, creative, and weird in a good way. Ambitious and has goals and hobbies that they love. Someone who can we get along together as people, as friends, and as a couple.
+          <font color="#00ff00"><b>&#9658; SEEKING:</b></font> Someone funny, creative, and weird in a good way. Ambitious and has goals and hobbies that they love. Someone we can get along with as people, as friends, and as a couple.
         </div>
         <div class="wants-box">
           <span class="wants-label">&#9658; GIDEON WANTS TO KNOW:</span>
@@ -547,7 +562,7 @@
         <div class="review-site-body">
           <div class="review-site-title">DateMate&#8482; User Reviews &rsaquo; Gideon: Madison WI</div>
           <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div style="margin-top:6px;">I said I wanted to grab coffee and he said he knew a place. He took me to a coffeshop run by mice that only serves coffee in thimbles. It took us hours to drink a full cup equivalent. Then we went to a movie about a german commune sent into space. We went to an art museum that only had sculptures made of toothpicks. I think I'm forever changed.</div>
+          <div style="margin-top:6px;">I said I wanted to grab coffee and he said he knew a place. He took me to a coffeeshop run by mice that only serves coffee in thimbles. It took us hours to drink a full cup equivalent. Then we went to a movie about a german commune sent into space. We went to an art museum that only had sculptures made of toothpicks. I think I'm forever changed.</div>
           <div class="review-author">&mdash; anonymous user &bull; verified date &bull; March 2026</div>
         </div>
       </div>
@@ -629,7 +644,7 @@
       <div style="display:inline-block; background:#1e1535; border:2px solid #6a4fa0; border-radius:4px; padding:4px 12px; margin:8px 0 12px; font-family:'Courier New',monospace; font-size:13px; font-weight:bold; color:#a888d8; letter-spacing:0.05em; letter-spacing:0.05em;">
         INTERESTED IN: &#9794; Men
       </div>
-        <p class="copy-body">Audrey harnesses the energy of an entire forest to fuel her hobbies. She dances, reads, meditates, sings, plays guitar, goes rock climbing, weight lifts, plays ultimate frisbee, studies tapeworms, makes tea,<b AND MORE b> She's always wanting to learn new things and explore the world around her. Being active is a priority for her so she's at the gym or working out several times a week. Audrey's friends would describe her as, "weird??? FUN! Fire hair. Will fight you (consensually)." Some potential date ideas could be Rock climbing, exploring small towns around Wisconsin, hiking, trying out a coffee shop, going to the library or anything else your noggin' comes up with! </b
+        <p class="copy-body">Audrey harnesses the energy of an entire forest to fuel her hobbies. She dances, reads, meditates, sings, plays guitar, goes rock climbing, weight lifts, plays ultimate frisbee, studies tapeworms, makes tea, <b>and more.</b> She's always wanting to learn new things and explore the world around her. Being active is a priority for her so she's at the gym or working out several times a week. Audrey's friends would describe her as, "weird??? FUN! Fire hair. Will fight you (consensually)." Some potential date ideas: rock climbing, exploring small towns around Wisconsin, hiking, trying out a coffee shop, going to the library, or anything else your noggin comes up with!</p>
         <p class="copy-body">Warm enough to make you feel immediately at home, chaotic enough to say, "What the actual F*ck is going on?!?!?!" Audrey doesn't know what's going on most of the time either. If you're inspired to try random things on a whim, Audrey will be the gal for you (;  </p>
         <div class="intentions-box">
           <font color="#00ff00"><b>&#9658; INTENTIONS:</b></font> Friends first, see where it goes.<br><br>
@@ -637,7 +652,7 @@
         </div>
         <div class="wants-box">
           <span class="wants-label">&#9658; AUDREY WANTS TO KNOW:</span>
-          What cryptid do you genuine think is real and what would you do if you met them?
+          What cryptid do you genuinely think is real and what would you do if you met them?
         </div>
       <div class="review-outer">
         <div class="review-site-bar">
@@ -700,7 +715,7 @@
         <div class="review-site-body">
           <div class="review-site-title">HandsomeMenReview.biz &rsaquo; SEEKING: Handsome, Rich &amp; Ambitious</div>
           <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div style="margin-top:6px;">She arrived at our date fashonably late. She ordered a shirley temple and started sipping it aggressively; I was a little intimidated. When we took a walk after, she dared me to race and started throwing snwoballs at me until I surrendered. She left in a hurry and left her glass slipper because she said "she had to get her nine hours".</div>
+          <div style="margin-top:6px;">She arrived at our date fashionably late. She ordered a shirley temple and started sipping it aggressively; I was a little intimidated. When we took a walk after, she dared me to race and started throwing snowballs at me until I surrendered. She left in a hurry and left her glass slipper because she said "she had to get her nine hours".</div>
           <div class="review-author">&mdash; house roommate &bull; eyewitness account &bull; ongoing</div>
         </div>
       </div>
@@ -819,7 +834,7 @@
   <tr class="divider-row"><td><div class="divider-hearts">~ &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; &#10084; &#9829; ~</div></td></tr>
 
   <!-- LOVE CALC + MAGIC 8 SIDE BY SIDE -->
-  <tr><td style="padding:10px 20px;">
+  <tr id="funstuff"><td style="padding:10px 20px;">
     <table width="100%" cellpadding="0" cellspacing="8" style="border-collapse:separate;">
       <tr valign="top">
 
@@ -876,11 +891,7 @@
 
 </table>
 
-<div class="marquee-bar">
-  <marquee scrollamount="6" direction="right">
-    &hearts; GIDEON &hearts; SILAS &hearts; AUDREY &hearts; ELINOR &hearts; CASEY &hearts; NYIGEL &hearts; LOOKING FOR LOVE IN MADISON WI &hearts; ARE YOU THE ONE?? &hearts; APPLY TODAY &hearts;
-  </marquee>
-</div>
+
 
 <script>
 // STARFIELD
@@ -914,7 +925,44 @@ document.addEventListener('mousemove', function(e){
 
 
 
-// LOVE CALCULATOR
+// LIVE CLOCK
+function updateClock() {
+  const now = new Date();
+  let h = now.getHours(), m = now.getMinutes();
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  document.getElementById('taskbar-clock').textContent = h + ':' + String(m).padStart(2,'0') + ' ' + ampm;
+}
+updateClock();
+setInterval(updateClock, 15000);
+
+// IE PROGRESS BAR - stop after load
+window.addEventListener('load', function() {
+  const bar = document.getElementById('ie-progress-bar');
+  const statusText = document.getElementById('ie-status-text');
+  if (bar) { bar.style.animation = 'none'; bar.style.width = '100%'; }
+  setTimeout(function() {
+    if (bar) bar.style.width = '0%';
+    if (statusText) statusText.textContent = '✓ Done';
+  }, 800);
+});
+
+// START MENU
+function toggleStartMenu() {
+  const m = document.getElementById('start-menu');
+  m.style.display = m.style.display === 'none' ? 'block' : 'none';
+}
+function closeStartMenu() {
+  document.getElementById('start-menu').style.display = 'none';
+}
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('start-menu');
+  const btn = document.getElementById('start-btn');
+  if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.style.display = 'none';
+  }
+});
+
 function calcLove(){
   const n1 = document.getElementById('name1').value.trim();
   const n2 = document.getElementById('name2').value.trim();
@@ -971,6 +1019,15 @@ function askBall(){
 
   </div><!-- end ie-content -->
 
+  <!-- BOTTOM MARQUEE (inside IE window) -->
+  <div class="marquee-bar">
+    <div class="marquee-wrap">
+      <div class="marquee-track-right">
+        &hearts; GIDEON &hearts; SILAS &hearts; AUDREY &hearts; ELINOR &hearts; CASEY &hearts; NYIGEL &hearts; LOOKING FOR LOVE IN MADISON WI &hearts; ARE YOU THE ONE?? &hearts; APPLY TODAY &hearts;&nbsp;&nbsp;&nbsp;&nbsp;&hearts; GIDEON &hearts; SILAS &hearts; AUDREY &hearts; ELINOR &hearts; CASEY &hearts; NYIGEL &hearts; LOOKING FOR LOVE IN MADISON WI &hearts; ARE YOU THE ONE?? &hearts; APPLY TODAY &hearts;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+    </div>
+  </div>
+
   <!-- STATUS BAR -->
   <div id="ie-statusbar">
     <div id="ie-status-left">
@@ -984,7 +1041,7 @@ function askBall(){
 
 <!-- WINDOWS 98 TASKBAR -->
 <div id="win98-taskbar">
-  <div id="start-btn">
+  <div id="start-btn" onclick="toggleStartMenu()" title="Start">
     <span>&#127882;</span> <b>Start</b>
   </div>
   <div class="taskbar-sep"></div>
@@ -992,6 +1049,19 @@ function askBall(){
   <div class="taskbar-item">&#128190; My Documents</div>
   <div class="taskbar-item">&#128247; Paint</div>
   <div id="taskbar-clock">12:00 PM</div>
+</div>
+
+<!-- START MENU -->
+<div id="start-menu" style="display:none; position:fixed; bottom:32px; left:0; width:200px; background:#c0c0c0; border:2px outset #ffffff; z-index:10001; font-family:'Arial',sans-serif; font-size:12px; box-shadow:3px 3px 0 #000;">
+  <div style="background:linear-gradient(180deg,#000080,#1084d0); color:#fff; writing-mode:vertical-rl; transform:rotate(180deg); padding:6px 4px; font-weight:bold; font-size:13px; float:left; height:100%; min-height:160px; letter-spacing:1px;">Windows 98</div>
+  <div style="margin-left:28px;">
+    <div class="smenu-item" onclick="window.scrollTo(0,0)">&#127968; Home</div>
+    <div class="smenu-item" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">&#9829; Apply Now</div>
+    <div class="smenu-item" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">&#128100; Candidates</div>
+    <div class="smenu-item" onclick="document.getElementById('funstuff').scrollIntoView({behavior:'smooth'})">&#127922; Fun Stuff</div>
+    <div style="border-top:1px solid #808080; margin:4px 0;"></div>
+    <div class="smenu-item" onclick="closeStartMenu()">&#10005; Close</div>
+  </div>
 </div>
 
 
