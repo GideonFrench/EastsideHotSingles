@@ -724,6 +724,11 @@
   <!-- ELINOR -->
   <tr><td style="padding:10px 20px;">
     <table class="listing-table" cellpadding="0" cellspacing="0" id="elinor">
+      <tr>
+      <td id="cart-banner" style="background:#7a1f2b; color:#fff; text-align:center; padding:8px 12px; font-family:'Courier New', monospace; font-size:13px; font-weight:bold; letter-spacing:0.05em; border-bottom:2px solid #8a4060;">
+        ⚠ Loading cart activity...
+      </td>
+    </tr>
       <tr><td class="listing-header-cell">
         <span class="ad-number">PERSONAL AD &numero; 004</span>
         <span class="listing-headline">&#128373; WITTY AGENT SEEKING HANDSOME ACCOMPLICE &#128373;</span>
@@ -1026,8 +1031,10 @@ function updateClock() {
   h = h % 12 || 12;
   document.getElementById('taskbar-clock').textContent = h + ':' + String(m).padStart(2,'0') + ' ' + ampm;
 }
-updateClock();
-setInterval(updateClock, 15000);
+window.addEventListener("DOMContentLoaded", () => {
+  updateClock();
+  setInterval(updateClock, 15000);
+});
 
 // IE PROGRESS BAR - stop after load
 window.addEventListener('load', function() {
@@ -1108,6 +1115,42 @@ function askBall(){
     answer.textContent = response;
   },1400);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  function poisson(lambda) {
+    let L = Math.exp(-lambda);
+    let k = 0;
+    let p = 1;
+    do {
+      k++;
+      p *= Math.random();
+    } while (p > L);
+    return k - 1;
+  }
+
+  const lambda = 2.5;
+  const banner = document.getElementById("cart-banner");
+
+  function updateBanner() {
+    if (!banner) return;
+
+    // prevent 0 + add slight smoothing so it doesn't jump wildly
+    let count = Math.max(1, poisson(lambda));
+
+    banner.textContent = `⚠ ${count} other customer${count === 1 ? ' has' : 's have'} this item in their cart`;
+  }
+
+  // initial run
+  updateBanner();
+
+  // update every 3–6 seconds (randomized so it feels less robotic)
+  setInterval(() => {
+    updateBanner();
+  }, 3000 + Math.random() * 3000);
+
+});
+
 </script>
 
   </div><!-- end ie-content -->
